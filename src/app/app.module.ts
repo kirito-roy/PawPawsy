@@ -26,6 +26,8 @@ import Lara from '@primeng/themes/lara';
 import Material from '@primeng/themes/material';
 import Nora from '@primeng/themes/nora';
 import {} from '@primeng/themes';
+import { InputIcon } from 'primeng/inputicon';
+import { IconField } from 'primeng/iconfield';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,6 +47,7 @@ import {} from '@primeng/themes';
     ToastModule,
     DialogModule,
     ReactiveFormsModule,
+    InputIcon, IconField,  
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
