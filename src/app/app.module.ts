@@ -28,6 +28,9 @@ import Nora from '@primeng/themes/nora';
 import {} from '@primeng/themes';
 import { InputIcon } from 'primeng/inputicon';
 import { IconField } from 'primeng/iconfield';
+import { LayoutModule } from './layout/layout.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,6 +51,9 @@ import { IconField } from 'primeng/iconfield';
     DialogModule,
     ReactiveFormsModule,
     InputIcon, IconField,  
+    LayoutModule,
+    NgxSpinnerModule,
+    NgxPermissionsModule.forRoot(),
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
