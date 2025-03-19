@@ -1,0 +1,11 @@
+<div class="layout-wrapper " style="background-image: url('assets/img/cat.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;" [ngClass]="containerClass">
+    <app-topbar></app-topbar>
+    <app-sidebar></app-sidebar>
+    <div class="layout-main-container">
+        <div class="layout-main">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+    <div class="layout-mask animate-fadein"></div>
+</div> 
