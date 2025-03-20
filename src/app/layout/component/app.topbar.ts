@@ -14,10 +14,13 @@ import { LayoutService } from '../service/layout.service';
 })
 export class AppTopbar {
     items!: MenuItem[];
+    themeMode: string ="Light";
 
     constructor(public layoutService: LayoutService) {}
 
     toggleDarkMode() {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
+        this.themeMode = this.layoutService.layoutConfig().darkTheme ? "Dark" : "Light";
+        // console.log(this.themeMode);
     }
 }
