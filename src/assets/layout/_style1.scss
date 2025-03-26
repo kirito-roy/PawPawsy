@@ -15,7 +15,7 @@
   // background-color: var(--surface-overlay);
   // border-radius: var(--content-border-radius);
   // padding: 0.5rem 1.5rem;
-  background-image: url("../img/feather1.jpg");
+  background-image: url("../img/sideB1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -37,7 +37,7 @@
       // font-weight: 700;
       // color: var(--text-color);
       // margin: 0.75rem 0;
-      color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
     }
 
     > a {
@@ -47,12 +47,10 @@
 
   a {
     user-select: none;
-    
 
     &.active-menuitem {
       > .layout-submenu-toggler {
         transform: rotate(-180deg);
-        color: white;
       }
     }
   }
@@ -61,7 +59,6 @@
     > a {
       .layout-submenu-toggler {
         transform: rotate(-180deg);
-        color: white;
       }
     }
   }
@@ -72,18 +69,17 @@
     list-style-type: none;
 
     a {
-    //   display: flex;
-    //   align-items: center;
-    //   position: relative;
-    //   outline: 0 none;
-    //   color: var(--text-color);
-    //   cursor: pointer;
-    //   padding: 0.75rem 1rem;
-    //   border-radius: var(--content-border-radius);
-    //   transition: background-color var(--element-transition-duration),
-    //     box-shadow var(--element-transition-duration);
-        color: white;
-
+      //   display: flex;
+      //   align-items: center;
+      //   position: relative;
+      //   outline: 0 none;
+      //   color: var(--text-color);
+      //   cursor: pointer;
+      //   padding: 0.75rem 1rem;
+      //   border-radius: var(--content-border-radius);
+      //   transition: background-color var(--element-transition-duration),
+      //     box-shadow var(--element-transition-duration);
+      color: rgb(0, 0, 0);
 
       .layout-menuitem-icon {
         margin-right: 0.5rem;
@@ -93,7 +89,7 @@
         font-size: 75%;
         margin-left: auto;
         transition: transform var(--element-transition-duration);
-        color: white;
+        color: rgb(0, 0, 0);
       }
 
       &.active-route {
@@ -102,7 +98,7 @@
       }
 
       &:hover {
-        background-color:rgba(0, 0, 0, 0.39);
+        background-color: rgba(0, 0, 0, 0.39);
       }
 
       &:focus {
@@ -115,11 +111,9 @@
       border-radius: var(--content-border-radius);
 
       li {
-
         a {
           margin-left: 1rem;
-        color: white;
-
+          color: rgb(0, 0, 0);
         }
 
         li {
@@ -175,3 +169,17 @@
   overflow: hidden;
   transition: max-height 1s ease-in-out;
 }
+// .cards {
+//   background-image: url("../img/pawB3.jpg");
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-attachment: fixed;
+//   padding: 2rem;
+//   margin-bottom: 2rem;
+//   border-radius: var(--content-border-radius);
+
+//   &:last-child {
+//       margin-bottom: 0;
+//   }
+// }
