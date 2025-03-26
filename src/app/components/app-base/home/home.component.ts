@@ -16,5 +16,5 @@ export class HomeComponent {
 export default [
   { path: '', component: HomeComponent },
   { path: 'second', loadChildren: () => import('../second/second.component') },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '/notfound' }
 ] as Routes;
