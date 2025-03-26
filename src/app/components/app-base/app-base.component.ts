@@ -10,8 +10,3 @@ import { Router, RouterModule, Routes } from '@angular/router';
 export class AppBaseComponent {
 
 }
-export default [
-  {path: '', component:AppBaseComponent },
-  { path: 'home', loadChildren: () => import('./home/home.component') },
-  { path: '**', redirectTo: '' }
-] as Routes;

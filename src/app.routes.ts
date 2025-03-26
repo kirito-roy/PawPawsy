@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AppLayout } from './app/layout/component/app.layout';
 import { Notfound } from './app/pages/notfound/notfound';
+import { Dashboard } from './app/pages/dashboard/dashboard';
 
 export const appRoutes: Routes = [
   {
@@ -9,9 +10,14 @@ export const appRoutes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./app/components/app-base/app-base.component'),
+        component: Dashboard,
+        
       },
-
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./app/components/app-base/home/home.component'),
+      },
       {
         path: 'uikit',
         loadChildren: () => import('./app/pages/uikit/uikit.routes'),
