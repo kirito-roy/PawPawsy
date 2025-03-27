@@ -6,16 +6,25 @@
     >
       <i class="pi pi-bars"></i>
     </button>
-    <a class="layout-topbar-logo " routerLink="/">
-      <span class="hidden md:block ">
-        <span class="flex items-stretch ">
-        <i class="pi pi-lock mr-2" style="font-size:x-large;"></i>PawPawsy</span>
+    <a class="layout-topbar-logo" routerLink="/">
+      <span class="hidden md:block">
+        <span class="flex items-stretch">
+          <i class="pi pi-lock mr-2" style="font-size: x-large"></i
+          >PawPawsy</span
+        >
       </span>
     </a>
   </div>
 
   <div class="layout-topbar-actions">
-    <div class="layout-config-menu"></div>
+    <div class="layout-config-menu">
+      <div class="flex flex-col gap-4">
+        <p-iconfield iconPosition="left">
+          <input pInputText class="w-96 h-8 rounded-xl" type="text" placeholder="Search" />
+          <p-inputicon class="pi pi-search" />
+        </p-iconfield>
+      </div>
+    </div>
 
     <button
       class="layout-topbar-menu-button layout-topbar-action"
