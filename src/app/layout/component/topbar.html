@@ -6,16 +6,55 @@
     >
       <i class="pi pi-bars"></i>
     </button>
-    <a class="layout-topbar-logo " routerLink="/">
-      <span class="hidden md:block ">
-        <span class="flex items-stretch ">
-        <i class="pi pi-lock mr-2" style="font-size:x-large;"></i>PawPawsy</span>
-      </span>
+    <a class="layout-topbar-logo" routerLink="/">
+      <span class="flex items-center gap-4 " style="height: 4rem;">
+        <img src="assets/img/animal.png" style="height: 100%;" alt="LOGO"><span class="hidden md:block">PawPawsy</span></span
+      >
     </a>
   </div>
 
   <div class="layout-topbar-actions">
-    <div class="layout-config-menu"></div>
+    <div class="layout-config-menu">
+      <div class="hidden md:block">
+        <p-iconfield iconPosition="left">
+          <input
+            pInputText
+            class="w-96 h-10 rounded-xl"
+            type="text"
+            placeholder="Search"
+            [(ngModel)]="searchText"
+            (keydown.enter)="searchItems()"
+          />
+          <p-inputicon class="pi pi-search" (click)="searchItems()" />
+        </p-iconfield>
+      </div>
+      <div class="block md:hidden">
+        <p-drawer
+          [header]="SearchBar"
+          [(visible)]="search"
+          position="top"
+          [style]="{'height': 'auto'}"
+        >
+          <!-- ,'background-image': 'url(assets/img/sideB1.jpg)',
+        'background-size': 'cover',
+        'background-position': 'top',
+        'background-repeat': 'no-repeat',
+        'background-attachment': 'fixed' -->
+          <p-iconfield iconPosition="left">
+            <input
+              pInputText
+              class="w-full h-10 rounded-xl"
+              type="text"
+              placeholder="Search"
+              [(ngModel)]="searchText"
+              (keydown.enter)="searchItems()"
+            />
+            <p-inputicon class="pi pi-search" (click)="searchItems()" />
+          </p-iconfield>
+        </p-drawer>
+        <p-button (click)="toggleSearchPhone()" icon="pi pi-search" size="large" />
+      </div>
+    </div>
 
     <button
       class="layout-topbar-menu-button layout-topbar-action"
@@ -57,16 +96,16 @@
           <app-configurator />
         </div>
         <button type="button" class="layout-topbar-action">
-          <i class="pi pi-calendar"></i>
-          <span>Calendar</span>
-        </button>
-        <button type="button" class="layout-topbar-action">
-          <i class="pi pi-inbox"></i>
-          <span>Messages</span>
+          <i class="pi pi-sign-in"></i>
+          <span>Login</span>
         </button>
         <button type="button" class="layout-topbar-action">
           <i class="pi pi-user"></i>
           <span>Profile</span>
+        </button>
+        <button type="button" class="layout-topbar-action">
+          <i class="pi pi-sign-out"></i>
+          <span>Logout</span>
         </button>
       </div>
     </div>
