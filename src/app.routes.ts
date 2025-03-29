@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AppLayout } from './app/layout/component/app.layout';
 import { Notfound } from './app/pages/notfound/notfound';
 import { Dashboard } from './app/pages/dashboard/dashboard';
+import { RegisterComponent } from './app/pages/register/register.component';
 
 export const appRoutes: Routes = [
   {
@@ -26,6 +27,7 @@ export const appRoutes: Routes = [
     ],
   },
   { path: 'notfound', component: Notfound },
+  { path: 'register', component: RegisterComponent },
   { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes') },
   { path: '**', redirectTo: '/notfound' },
 ];
