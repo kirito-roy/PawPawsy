@@ -25,6 +25,6 @@ export class TestService {
       params = params.set('id', id.toString());
     }
 
-    return this.http.get<any>(`${this.apiUrl}/hello`, { params });
+    return this.http.get<any>(`${this.apiUrl}/hello`,);
   }
 }
