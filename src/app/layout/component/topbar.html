@@ -7,8 +7,11 @@
       <i class="pi pi-bars"></i>
     </button>
     <a class="layout-topbar-logo" routerLink="/">
-      <span class="flex items-center gap-4 " style="height: 4rem;">
-        <img src="assets/img/animal.png" style="height: 100%;" alt="LOGO"><span class="hidden md:block">PawPawsy</span></span
+      <span class="flex items-center gap-4" style="height: 4rem">
+        <img src="assets/img/animal.png" style="height: 100%" alt="LOGO" /><span
+          class="hidden md:block"
+          >PawPawsy</span
+        ></span
       >
     </a>
   </div>
@@ -52,7 +55,11 @@
             <p-inputicon class="pi pi-search" (click)="searchItems()" />
           </p-iconfield>
         </p-drawer>
-        <p-button (click)="toggleSearchPhone()" icon="pi pi-search" size="large" />
+        <p-button
+          (click)="toggleSearchPhone()"
+          icon="pi pi-search"
+          size="large"
+        />
       </div>
     </div>
 
@@ -95,15 +102,29 @@
           </button>
           <app-configurator />
         </div>
-        <button type="button" class="layout-topbar-action">
+        <button
+          *ngIf="!logedin"
+          type="button"
+          class="layout-topbar-action"
+          routerLink="/login"
+        >
           <i class="pi pi-sign-in"></i>
           <span>Login</span>
         </button>
-        <button type="button" class="layout-topbar-action">
-          <i class="pi pi-user"></i>
-          <span>Profile</span>
-        </button>
-        <button type="button" class="layout-topbar-action">
+        <span class="flex items-center gap-1">
+          <button type="button" class="layout-topbar-action">
+            <i class="pi pi-user"></i>
+
+            <span>Profile</span>
+          </button>
+          <span class="hidden md:block ">{{username}}</span>
+        </span>
+        <button
+          type="button"
+          *ngIf="logedin"
+          class="layout-topbar-action"
+          (click)="logout()"
+        >
           <i class="pi pi-sign-out"></i>
           <span>Logout</span>
         </button>
