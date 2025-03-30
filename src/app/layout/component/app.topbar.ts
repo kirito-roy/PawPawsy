@@ -24,6 +24,7 @@ import { ToastModule } from 'primeng/toast';
 import { PopoverModule } from 'primeng/popover';
 import { DrawerModule } from 'primeng/drawer';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/components/core/services/auth.service';
 
 @Component({
   selector: 'app-topbar',
@@ -60,9 +61,15 @@ export class AppTopbar {
   search: boolean = false;
   searchText: string = '';
   SearchBar:string = "";
+  logedin: boolean = false;
+  username:string = "";
   barlist=["whats on your mind?","Looking for something?","Search here","Search for something","Search for a product"];
-  constructor(public layoutService: LayoutService) {}
+  constructor(public layoutService: LayoutService, private authService:AuthService) {}
   ngOnInit() {
+    this.logedin = this.authService.hasToken();
+    if(this.logedin) {
+      this.username = localStorage.getItem('user') || '';
+    }
   }
   toggleSearchPhone() {
     this.SearchBar = this.barlist[Math.floor(Math.random() * this.barlist.length)];
@@ -83,4 +90,10 @@ export class AppTopbar {
       : 'Light';
     // console.log(this.themeMode);
   }
+  logout() {
+    this.authService.logout()
+    this.username = "";
+    this.logedin = false;
+  }
+  //   this.authService.logout();
 }

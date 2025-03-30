@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { AppLayout } from './app/layout/component/app.layout';
 import { Notfound } from './app/pages/notfound/notfound';
 import { Dashboard } from './app/pages/dashboard/dashboard';
+import { AuthGuard } from 'src/app/components/core/services/guards/auth.guard';
+import { LoginComponent } from './app/pages/login/login.component';
 import { RegisterComponent } from './app/pages/register/register.component';
 
 export const appRoutes: Routes = [
@@ -12,7 +14,7 @@ export const appRoutes: Routes = [
       {
         path: '',
         component: Dashboard,
-        
+        // canActivate: [AuthGuard],
       },
       {
         path: 'home',
@@ -26,6 +28,7 @@ export const appRoutes: Routes = [
       { path: 'pages', loadChildren: () => import('./app/pages/pages.routes') },
     ],
   },
+  {path: 'login', component:LoginComponent},
   { path: 'notfound', component: Notfound },
   { path: 'register', component: RegisterComponent },
   { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes') },
