@@ -159,3 +159,13 @@
         }
     }
 }
+
+img.change-color {
+    filter: brightness(0) invert(0); // Black by default
+    transition: filter 0.3s ease-in-out;
+  }
+  
+  // When in dark mode: Make the image white
+  [class*='app-dark'] img.change-color {
+    filter: brightness(0) invert(1); // White in dark mode
+  }
