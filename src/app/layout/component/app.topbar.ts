@@ -25,6 +25,9 @@ import { PopoverModule } from 'primeng/popover';
 import { DrawerModule } from 'primeng/drawer';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/components/core/services/auth.service';
+import { SearchService } from 'src/app/components/core/api/search.service';
+import { firstValueFrom } from 'rxjs';
+import { Search } from 'src/app/components/core/api/model/search';
 
 @Component({
   selector: 'app-topbar',
@@ -60,11 +63,14 @@ export class AppTopbar {
   themeMode: string = 'Light';
   search: boolean = false;
   searchText: string = '';
+  searchData: Search = {
+    data: '',
+  };
   SearchBar:string = "";
   logedin: boolean = false;
   username:string = "";
   barlist=["whats on your mind?","Looking for something?","Search here","Search for something","Search for a product"];
-  constructor(public layoutService: LayoutService, private authService:AuthService) {}
+  constructor(public layoutService: LayoutService, private authService:AuthService, private searchdata:SearchService ) {}
   ngOnInit() {
     this.logedin = this.authService.hasToken();
     if(this.logedin) {
@@ -76,8 +82,11 @@ export class AppTopbar {
 
     this.search =!this.search;
   }
-  searchItems() {
-    console.log(this.searchText);
+  async searchItems() {
+    this.searchData.data = this.searchText;
+    const res = await firstValueFrom(this.searchdata.searchDATA(this.searchData));
+    console.log(res);
+    
   }
 
   toggleDarkMode() {
