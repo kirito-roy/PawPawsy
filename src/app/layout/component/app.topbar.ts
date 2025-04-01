@@ -88,6 +88,10 @@ export class AppTopbar {
     console.log(res);
     
   }
+  async searchedItems() {
+    const res = await firstValueFrom(this.searchdata.searchedDATA());
+    console.log(res);
+  }
 
   toggleDarkMode() {
     this.layoutService.layoutConfig.update((state) => ({

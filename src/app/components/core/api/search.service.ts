@@ -19,5 +19,9 @@ export class SearchService {
 
     return this.http.get<any>(`${this.apiUrl}/search`, { params });
   }
+  searchedDATA(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/searched`,);
+  }
 
 }
+

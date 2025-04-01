@@ -27,9 +27,11 @@
             placeholder="Search"
             [(ngModel)]="searchText"
             (keydown.enter)="searchItems()"
+            (click)="searchedItems()"
           />
           <p-inputicon class="pi pi-search" (click)="searchItems()" />
         </p-iconfield>
+
       </div>
       <div class="block md:hidden">
         <p-drawer
@@ -51,9 +53,11 @@
               placeholder="Search"
               [(ngModel)]="searchText"
               (keydown.enter)="searchItems()"
+              (click)="searchedItems()"
             />
             <p-inputicon class="pi pi-search" (click)="searchItems()" />
           </p-iconfield>
+
         </p-drawer>
         <p-button
           (click)="toggleSearchPhone()"
@@ -61,6 +65,7 @@
           size="large"
         />
       </div>
+
     </div>
 
     <button
