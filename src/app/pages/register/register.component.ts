@@ -9,6 +9,7 @@ import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
 import { AuthService } from 'src/app/components/core/services/auth.service';
 import { AppFloatingConfigurator } from 'src/app/layout/component/app.floatingconfigurator';
+import { ToastService } from 'src/app/components/core/services/toast.service';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +33,7 @@ export class RegisterComponent {
   email: string = '';
   checked: boolean = false;
   confirm_password: string = '';
-  constructor(private auth: AuthService,private route : Router) {}
+  constructor(private auth: AuthService,private route : Router,private toast: ToastService) {}
 
   async signupF() {
     if (
@@ -42,31 +43,44 @@ export class RegisterComponent {
       this.email == '' ||
       this.confirm_password == ''
     ) {
-      alert('Please fill all fields');
+      this.toast.showError('Please fill all fields');
       return;
     }
-    if(this.checked == false){
-      alert('Please accept the terms and conditions');
+  
+    if (!this.checked) {
+      this.toast.showWarning('Please accept the terms and conditions');
       return;
     }
-    if (this.password != this.confirm_password) {
-      alert('Password and Confirm Password do not match');
+  
+    if (this.password !== this.confirm_password) {
+      this.toast.showError('Password and Confirm Password do not match');
       return;
     }
+  
     const payload = {
-      username : this.first_name + ' ' + this.last_name,
+      username: `${this.first_name} ${this.last_name}`,
       email: this.email,
       password: this.password,
-    }
-    const res = await firstValueFrom(this.auth.register(payload));
-    if (res.message == "User registered successfully") {
-      this.first_name = '';
-      this.last_name = '';
-      this.password = '';
-      this.email = '';
-      this.confirm_password = '';
-      this.checked = false;
-      this.route.navigate(['/']);
+    };
+  
+    try {
+      const res = await firstValueFrom(this.auth.register(payload));
+  
+      if (res.message === 'User registered successfully') {
+        this.toast.showSuccess('Registration successful! Redirecting...');
+        this.first_name = '';
+        this.last_name = '';
+        this.password = '';
+        this.email = '';
+        this.confirm_password = '';
+        this.checked = false;
+  
+        setTimeout(() => {
+          this.route.navigate(['/']);
+        }, 2000); // Delay navigation slightly for user experience
+      }
+    } catch (error) {
+      this.toast.showError('Registration failed. Please try again.');
     }
   }
 }
