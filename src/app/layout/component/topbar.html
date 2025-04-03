@@ -45,7 +45,7 @@
         'background-position': 'top',
         'background-repeat': 'no-repeat',
         'background-attachment': 'fixed' -->
-          <p-iconfield iconPosition="left">
+          <p-iconfield iconPosition="left" class="mb-2">
             <input
               pInputText
               class="w-full h-10 rounded-xl"
@@ -53,10 +53,11 @@
               placeholder="Search"
               [(ngModel)]="searchText"
               (keydown.enter)="searchItems()"
-              (click)="searchedItems()"
+              
             />
             <p-inputicon class="pi pi-search" (click)="searchItems()" />
           </p-iconfield>
+          <p-listbox *ngIf="searches" [options]="searches" [(ngModel)]="selectedsearch" optionLabel="search" class="w-full " (click)="itemselected()" />
 
         </p-drawer>
         <p-button

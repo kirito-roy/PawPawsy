@@ -28,6 +28,8 @@ import { AuthService } from 'src/app/components/core/services/auth.service';
 import { SearchService } from 'src/app/components/core/api/search.service';
 import { firstValueFrom } from 'rxjs';
 import { Search } from 'src/app/components/core/api/model/search';
+import { TableModule } from 'primeng/table';
+import { ListboxModule } from 'primeng/listbox';
 
 @Component({
   selector: 'app-topbar',
@@ -55,6 +57,8 @@ import { Search } from 'src/app/components/core/api/model/search';
     MultiSelectModule,
     PopoverModule,
     DrawerModule,
+    TableModule,
+    ListboxModule,
   ],
   templateUrl: './topbar.html',
 })
@@ -66,31 +70,53 @@ export class AppTopbar {
   searchData: Search = {
     data: '',
   };
-  SearchBar:string = "";
+  SearchBar: string = '';
   logedin: boolean = false;
-  username:string = "";
-  barlist=["whats on your mind?","Looking for something?","Search here","Search for something","Search for a product"];
-  constructor(public layoutService: LayoutService, private authService:AuthService, private searchdata:SearchService ) {}
+  username: string = '';
+  barlist = [
+    'whats on your mind?',
+    'Looking for something?',
+    'Search here',
+    'Search for something',
+    'Search for a product',
+  ];
+  selectedsearch: { search: string }={
+    search: ''
+  }
+  searches !: any[] ;
+  constructor(
+    public layoutService: LayoutService,
+    private authService: AuthService,
+    private searchdata: SearchService
+  ) {}
   ngOnInit() {
     this.logedin = this.authService.hasToken();
-    if(this.logedin) {
+    if (this.logedin) {
       this.username = localStorage.getItem('user') || '';
     }
   }
-  toggleSearchPhone() {
-    this.SearchBar = this.barlist[Math.floor(Math.random() * this.barlist.length)];
-
-    this.search =!this.search;
+  async toggleSearchPhone() {
+    this.SearchBar =
+      this.barlist[Math.floor(Math.random() * this.barlist.length)];
+    this.search = !this.search;
+    const res = await firstValueFrom(this.searchdata.searchedDATA());
+    console.log(res);
+    this.searches = res.result;
+  }
+  itemselected(){
+   this.searchText = this.selectedsearch.search;
   }
   async searchItems() {
     this.searchData.data = this.searchText;
-    const res = await firstValueFrom(this.searchdata.searchDATA(this.searchData));
+    const res = await firstValueFrom(
+      this.searchdata.searchDATA(this.searchData)
+    );
     console.log(res);
-    
   }
   async searchedItems() {
     const res = await firstValueFrom(this.searchdata.searchedDATA());
     console.log(res);
+    this.searches = res.result;
   }
 
   toggleDarkMode() {
@@ -104,8 +130,8 @@ export class AppTopbar {
     // console.log(this.themeMode);
   }
   logout() {
-    this.authService.logout()
-    this.username = "";
+    this.authService.logout();
+    this.username = '';
     this.logedin = false;
   }
   //   this.authService.logout();

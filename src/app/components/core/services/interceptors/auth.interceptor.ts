@@ -34,7 +34,6 @@ export class AuthInterceptor implements HttpInterceptor {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log('Cloned request with token:', cloned);
         return next.handle(cloned).pipe(
           finalize(() => this.loadingService.hide())
         );
