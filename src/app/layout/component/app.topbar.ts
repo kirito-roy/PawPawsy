@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -30,6 +30,7 @@ import { firstValueFrom } from 'rxjs';
 import { Search } from 'src/app/components/core/api/model/search';
 import { TableModule } from 'primeng/table';
 import { ListboxModule } from 'primeng/listbox';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-topbar',
@@ -59,6 +60,7 @@ import { ListboxModule } from 'primeng/listbox';
     DrawerModule,
     TableModule,
     ListboxModule,
+    DialogModule,
   ],
   templateUrl: './topbar.html',
 })
@@ -80,10 +82,11 @@ export class AppTopbar {
     'Search for something',
     'Search for a product',
   ];
-  selectedsearch: { search: string }={
-    search: ''
-  }
-  searches !: any[] ;
+  selectedsearch: { search: string } = {
+    search: '',
+  };
+  searches!: any[];
+  visible: boolean = false;
   constructor(
     public layoutService: LayoutService,
     private authService: AuthService,
@@ -96,15 +99,14 @@ export class AppTopbar {
     }
   }
   async toggleSearchPhone() {
-    this.SearchBar =
-      this.barlist[Math.floor(Math.random() * this.barlist.length)];
+    this.addSearchBarName();
     this.search = !this.search;
     const res = await firstValueFrom(this.searchdata.searchedDATA());
     console.log(res);
     this.searches = res.result;
   }
-  itemselected(){
-   this.searchText = this.selectedsearch.search;
+  itemselected() {
+    this.searchText = this.selectedsearch.search;
   }
   async searchItems() {
     this.searchData.data = this.searchText;
@@ -112,8 +114,11 @@ export class AppTopbar {
       this.searchdata.searchDATA(this.searchData)
     );
     console.log(res);
+    this.search = false;
   }
   async searchedItems() {
+    this.addSearchBarName();
+    this.visible = !this.visible;
     const res = await firstValueFrom(this.searchdata.searchedDATA());
     console.log(res);
     this.searches = res.result;
@@ -134,5 +139,10 @@ export class AppTopbar {
     this.username = '';
     this.logedin = false;
   }
+  addSearchBarName() {
+    this.SearchBar =
+      this.barlist[Math.floor(Math.random() * this.barlist.length)];
+  }
+
   //   this.authService.logout();
 }

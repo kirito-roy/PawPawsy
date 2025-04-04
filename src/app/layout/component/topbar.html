@@ -8,10 +8,12 @@
     </button>
     <a class="layout-topbar-logo" routerLink="/">
       <span class="flex items-center gap-4" style="height: 4rem">
-        <img class="change-color " src="assets/img/animal.png" style="height: 100%" alt="LOGO" /><span
-          class="hidden md:block"
-          >PawPawsy</span
-        ></span
+        <img
+          class="change-color"
+          src="assets/img/animal.png"
+          style="height: 100%"
+          alt="LOGO"
+        /><span class="hidden md:block">PawPawsy</span></span
       >
     </a>
   </div>
@@ -19,19 +21,74 @@
   <div class="layout-topbar-actions">
     <div class="layout-config-menu">
       <div class="hidden md:block">
-        <p-iconfield iconPosition="left">
+        <p-button
+          label="Search  "
+          icon="pi pi-search"
+          severity="contrast"
+          (click)="searchedItems()"
+          iconPos="left"
+          [style]="{'width': '150px','text-align':'justify'}"
+          rounded
+          outlined
+        />
+        <!-- <p-iconfield iconPosition="left">
           <input
             pInputText
-            class="w-96 h-10 rounded-xl"
+            class="h-10 rounded-xl"
             type="text"
             placeholder="Search"
             [(ngModel)]="searchText"
             (keydown.enter)="searchItems()"
-            (click)="searchedItems()"
+            (click)="visible = true"
           />
           <p-inputicon class="pi pi-search" (click)="searchItems()" />
-        </p-iconfield>
-        
+        </p-iconfield> -->
+        <p-dialog
+          [(visible)]="visible"
+          [modal]="true"
+          position="top"
+          [style]="{ width: '50rem' }"
+          [dismissableMask]="true"
+        >
+          <ng-template #header>
+            <div class="inline-flex items-center justify-center gap-2">
+              <img
+                src="assets/img/animal.png"
+                alt="LOGO"
+                class="change-color h-10 w-10 rounded-full"
+              />
+              <span class="font-bold font-sans text-xl">{{SearchBar}}</span>
+            </div>
+          </ng-template>
+          <p-iconfield iconPosition="left">
+            <input
+              pInputText
+              class="h-10 w-full rounded-xl"
+              type="text"
+              placeholder="Search"
+              [(ngModel)]="searchText"
+              (keydown.enter)="searchItems()"
+            />
+            <p-inputicon class="pi pi-search" (click)="searchItems()" />
+          </p-iconfield>
+          <div class="mt-2">
+            <p-listbox
+              *ngIf="searches"
+              [options]="searches"
+              [(ngModel)]="selectedsearch"
+              optionLabel="search"
+              class="w-full mt-2"
+              (click)="itemselected()"
+            >
+              <ng-template let-search #item>
+                <div class="flex items-center gap-3">
+                  <i class="pi pi-history"></i>
+                  <div>{{ search.search }}</div>
+                </div>
+              </ng-template>
+            </p-listbox>
+          </div>
+        </p-dialog>
       </div>
       <div class="block md:hidden">
         <p-drawer
@@ -53,21 +110,24 @@
               placeholder="Search"
               [(ngModel)]="searchText"
               (keydown.enter)="searchItems()"
-              
             />
             <p-inputicon class="pi pi-search" (click)="searchItems()" />
           </p-iconfield>
-          <p-listbox *ngIf="searches" [options]="searches" [(ngModel)]="selectedsearch" optionLabel="search" class="w-full " (click)="itemselected()" />
-
+          <p-listbox
+            *ngIf="searches"
+            [options]="searches"
+            [(ngModel)]="selectedsearch"
+            optionLabel="search"
+            class="w-full"
+            (click)="itemselected()"
+          />
         </p-drawer>
         <p-button
           (click)="toggleSearchPhone()"
           icon="pi pi-search"
           size="large"
         />
-        
       </div>
-
     </div>
 
     <button
@@ -124,7 +184,7 @@
 
             <span>Profile</span>
           </button>
-          <span class="hidden md:block ">{{username}}</span>
+          <span class="hidden md:block">{{username}}</span>
         </span>
         <button
           type="button"
