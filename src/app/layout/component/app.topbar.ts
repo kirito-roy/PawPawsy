@@ -31,6 +31,7 @@ import { Search } from 'src/app/components/core/api/model/search';
 import { TableModule } from 'primeng/table';
 import { ListboxModule } from 'primeng/listbox';
 import { DialogModule } from 'primeng/dialog';
+import { ToastService } from 'src/app/components/core/services/toast.service';
 
 @Component({
   selector: 'app-topbar',
@@ -90,7 +91,8 @@ export class AppTopbar {
   constructor(
     public layoutService: LayoutService,
     private authService: AuthService,
-    private searchdata: SearchService
+    private searchdata: SearchService,
+    private toast: ToastService
   ) {}
   ngOnInit() {
     this.logedin = this.authService.hasToken();
@@ -134,10 +136,17 @@ export class AppTopbar {
       : 'Light';
     // console.log(this.themeMode);
   }
-  logout() {
-    this.authService.logout();
-    this.username = '';
-    this.logedin = false;
+  async logout() {
+    await this.toast.needConfirmation(
+      'Are you sure you want to logout?'
+    ).then((data) => {
+      if(data == true) {
+        this.authService.logout();
+        this.username = '';
+        this.logedin = false;
+      }
+    });
+    
   }
   addSearchBarName() {
     this.SearchBar =
