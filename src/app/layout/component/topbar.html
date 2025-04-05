@@ -113,14 +113,22 @@
             />
             <p-inputicon class="pi pi-search" (click)="searchItems()" />
           </p-iconfield>
+
           <p-listbox
             *ngIf="searches"
             [options]="searches"
             [(ngModel)]="selectedsearch"
             optionLabel="search"
-            class="w-full"
+            class="w-full mt-2"
             (click)="itemselected()"
-          />
+          >
+            <ng-template let-search #item>
+              <div class="flex items-center gap-3">
+                <i class="pi pi-history"></i>
+                <div>{{ search.search }}</div>
+              </div>
+            </ng-template>
+          </p-listbox>
         </p-drawer>
         <p-button
           (click)="toggleSearchPhone()"
