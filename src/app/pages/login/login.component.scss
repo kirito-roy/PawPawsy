@@ -1,0 +1,17 @@
+@use 'src/assets/layout/_mixins.scss' as *;
+div.loginWithGoogle {
+  background-color: var(--p-primary-color);
+  height: 50px;
+  margin-top: 10px;
+  color: var(--p-surface-100);
+  border-radius: 5px;
+  padding: 10px;
+  font-weight:bold;
+}
+
+// //  [class*='app-dark'] .loginWithGoogle {
+// //   color: black  !important;
+// // }
+// :root[class*='app-dark'] .loginWithGoogle{
+//     color: black  !important;
+// }

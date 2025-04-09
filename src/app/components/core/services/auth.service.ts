@@ -10,10 +10,15 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class AuthService {
   private apiUrl = 'https://petbackend.roy184433.workers.dev/api/user';
   private tokenKey = 'token';
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(
+    this.hasToken(),
+  );
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
   register(credentials: any): Observable<any> {
     return new Observable((observer) => {
@@ -27,9 +32,8 @@ export class AuthService {
         (error) => {
           console.error('Register error:', error);
           observer.error(error);
-        }
+        },
       );
-      
     });
   }
 
@@ -50,13 +54,38 @@ export class AuthService {
         (error) => {
           console.error('Login error:', error);
           observer.error(error);
-        }
+        },
       );
+    });
+  }
+  loginWithGoogle(idToken: any): Observable<any> {
+    return new Observable((observer) => {
+      this.http
+        .post<any>(
+          `${this.apiUrl}/google-login`,
+          idToken, // 🔑 use this for Google auth verification
+        )
+        .subscribe(
+          (response) => {
+            if (response.token) {
+              this.saveToken(response.token);
+              this.saveUser(response.user);
+              observer.next(response);
+              observer.complete();
+            } else {
+              observer.error('Token not received from API.');
+            }
+          },
+          (error) => {
+            console.error('Login error:', error);
+            observer.error(error);
+          },
+        );
     });
   }
 
   saveUser(user: any): void {
-    const username = user.username.split(" ")[0];
+    const username = user.username.split(' ')[0];
     localStorage.setItem('user', username);
   }
   // Save Token to Local Storage

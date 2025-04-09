@@ -7,11 +7,11 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
-import { first, firstValueFrom } from 'rxjs';
+import { first, firstValueFrom, tap } from 'rxjs';
 import { AuthService } from 'src/app/components/core/services/auth.service';
 import { AppFloatingConfigurator } from 'src/app/layout/component/app.floatingconfigurator';
 import { ToastService } from 'src/app/components/core/services/toast.service';
-
+import { Auth, getAuth, getRedirectResult, GoogleAuthProvider, signInWithPopup, signOut, } from '@angular/fire/auth'
 @Component({
   selector: 'app-login',
   imports: [
@@ -33,7 +33,10 @@ export class LoginComponent {
   password: string = '';
 
   checked: boolean = false;
-  constructor(private auth: AuthService, private router: Router , private toastService:ToastService) {}
+  constructor(private auth: AuthService, private router: Router , private toastService:ToastService,private Fauth: Auth) {}
+  ngOnInit() {
+    
+  }
   async loginF() {
     console.log('Login', this.email, this.password, this.checked);
     
@@ -51,5 +54,32 @@ export class LoginComponent {
     } catch (error) {
       this.toastService.showError('An error occurred during login.');
     }
+  }
+  loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(this.Fauth, provider)
+      .then(async (result) => {
+        const idToken = result.user; 
+        // console.log('Google ID Token:', idToken);
+        // console.log('User signed in:', result);
+      await firstValueFrom(
+          this.auth.loginWithGoogle( result.user).pipe(tap((res: any) => {
+            if (res.message === 'Login successful') {
+              this.toastService.showSuccess('Logged in successfully!');
+              const auth = getAuth();
+              signOut(auth)
+              this.router.navigate(['/']);
+            } else {
+              this.toastService.showError('Invalid credentials. Please try again.');
+            }
+          }))
+        );
+        
+
+        // Save user info or navigate
+      })
+      .catch((error) => {
+        console.error('Login failed:', error);
+      });
   }
 }
