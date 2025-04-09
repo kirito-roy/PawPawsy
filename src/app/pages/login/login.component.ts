@@ -35,31 +35,7 @@ export class LoginComponent {
   checked: boolean = false;
   constructor(private auth: AuthService, private router: Router , private toastService:ToastService,private Fauth: Auth) {}
   ngOnInit() {
-    getRedirectResult(this.Fauth)
-      .then(async (result) => {
-        if (result && result.user) {
-          const idToken = await result.user.getIdToken();
-  
-          console.log('Google ID Token:', idToken);
-  
-          // Call your backend with the user info
-          await firstValueFrom(
-            this.auth.loginWithGoogle(result.user).pipe(
-              tap((res: any) => {
-                if (res.message === 'Login successful') {
-                  this.toastService.showSuccess('Logged in successfully!');
-                  this.router.navigate(['/']);
-                } else {
-                  this.toastService.showError('Invalid credentials. Please try again.');
-                }
-              })
-            )
-          );
-        }
-      })
-      .catch((error) => {
-        console.error('Redirect login failed:', error);
-      });
+    
   }
   async loginF() {
     console.log('Login', this.email, this.password, this.checked);
