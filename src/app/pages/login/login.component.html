@@ -75,7 +75,7 @@
             <span
               class="font-medium no-underline ml-2 text-right cursor-pointer text-primary"
               ><div class="align-top">Forgot password?</div>
-              <button (click)="loginWithGoogle()">Login with Google</button>
+              <!-- <button (click)="loginWithGoogle()">Login with Google</button> -->
               <div class="align-bottom" routerLink="/register">Register?</div>
             </span>
           </div>
@@ -84,6 +84,18 @@
             styleClass="w-full"
             (click)="loginF()"
           ></p-button>
+
+          <div class="text-center">
+            <br />
+            <strong>or</strong>
+            <br />
+            <div class="loginWithGoogle mx-auto w-3/4 flex" (click)="loginWithGoogle()" >
+              <div class="w-full content-center">Login with Google -</div>
+              <div class="text-center content-center pr-3">
+                <i class="pi pi-google " style="font-size: 2rem;"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
