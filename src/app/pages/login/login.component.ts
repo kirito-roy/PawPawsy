@@ -59,7 +59,7 @@ export class LoginComponent {
     const provider = new GoogleAuthProvider();
     signInWithPopup(this.Fauth, provider)
       .then(async (result) => {
-        const idToken = await result.user?.getIdToken(); 
+        const idToken = result.user; 
         console.log('Google ID Token:', idToken);
         // console.log('User signed in:', result);
       await firstValueFrom(
