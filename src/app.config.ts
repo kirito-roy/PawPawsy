@@ -11,6 +11,10 @@ import { providePrimeNG } from 'primeng/config';
 import { appRoutes } from './app.routes';
 import { AuthInterceptor } from './app/components/core/services/interceptors/auth.interceptor';
 import { LoadingService } from './app/components/core/services/loading/loading.service';
+import { initializeApp, FirebaseApp } from 'firebase/app';
+import { provideFirebaseApp } from '@angular/fire/app';
+import { environment } from 'src/environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +27,8 @@ export const appConfig: ApplicationConfig = {
       }),
       withEnabledBlockingInitialNavigation()
     ),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
