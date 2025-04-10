@@ -65,8 +65,6 @@ export const appConfig: ApplicationConfig = {
     }),
     LoadingService,
     MessageService,
-    DatePipe,
-    DividerModule,
 
   ],
 };
