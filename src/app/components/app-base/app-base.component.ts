@@ -1,21 +1,42 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { TestService } from '../core/api/test/test.service';
-import { ButtonModule } from 'primeng/button';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, tap } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
-
-
+import { ToastService } from '../core/services/toast.service';
+import { Message } from 'primeng/message';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MessageService, ToastMessageOptions } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-base',
-  imports: [RouterModule, ButtonModule],
+  imports: [
+    RouterModule,
+    ButtonModule,
+    CommonModule,
+    ToastModule,
+    ButtonModule,
+    InputTextModule,
+    MessageModule,
+    FormsModule,
+  ],
   standalone: true,
   templateUrl: './app-base.component.html',
-  styleUrl: './app-base.component.scss'
+  styleUrl: './app-base.component.scss',
+  providers: [MessageService],
 })
 export class AppBaseComponent {
-  constructor(private router: Router , private test :TestService) {}
+  constructor(
+    private router: Router,
+    private test: TestService,
+    private toastService: ToastService,
+    private service: MessageService,
+  ) {}
   form!: FormGroup;
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -26,8 +47,18 @@ export class AppBaseComponent {
     });
   }
 
-  async testapi(){
-    const res = await firstValueFrom( this.test.testDATA(1));
-    console.log(res);
+  async testapi() {
+    await firstValueFrom(
+      this.test.testDATA(1).pipe(
+        tap((res) => {
+          try {
+            console.log(res);
+            this.toastService.showSuccess(res.status, false);
+          } catch (e) {
+            this.toastService.showError('Error', false);
+          }
+        }),
+      ),
+    );
   }
 }
