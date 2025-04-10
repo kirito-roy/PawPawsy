@@ -1,4 +1,9 @@
-import { provideHttpClient, withInterceptorsFromDi, withFetch, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+  withFetch,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
@@ -15,6 +20,9 @@ import { initializeApp, FirebaseApp } from 'firebase/app';
 import { provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { MessageService } from 'primeng/api';
+import { DatePipe } from '@angular/common';
+import { DividerModule } from 'primeng/divider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,17 +33,19 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
         scrollPositionRestoration: 'enabled',
       }),
-      withEnabledBlockingInitialNavigation()
+      withEnabledBlockingInitialNavigation(),
     ),
-    provideFirebaseApp(() => initializeApp({
-      apiKey: "AIzaSyDlqLc2Fq-tp_LIy1h5k0VXnl_wiBnUKY0",
-      authDomain: "pawpawsy.firebaseapp.com",
-      projectId: "pawpawsy",
-      storageBucket: "pawpawsy.firebasestorage.app",
-      messagingSenderId: "153275426304",
-      appId: "1:153275426304:web:d423fd9e8e211b28b71ae5",
-      measurementId: "G-P807ZK4TF7"
-    })),
+    provideFirebaseApp(() =>
+      initializeApp({
+        apiKey: 'AIzaSyDlqLc2Fq-tp_LIy1h5k0VXnl_wiBnUKY0',
+        authDomain: 'pawpawsy.firebaseapp.com',
+        projectId: 'pawpawsy',
+        storageBucket: 'pawpawsy.firebasestorage.app',
+        messagingSenderId: '153275426304',
+        appId: '1:153275426304:web:d423fd9e8e211b28b71ae5',
+        measurementId: 'G-P807ZK4TF7',
+      }),
+    ),
     provideAuth(() => getAuth()),
     {
       provide: HTTP_INTERCEPTORS,
@@ -54,5 +64,7 @@ export const appConfig: ApplicationConfig = {
       theme: { preset: Aura, options: { darkModeSelector: '.app-dark' } },
     }),
     LoadingService,
+    MessageService,
+
   ],
 };
