@@ -1,0 +1,69 @@
+.father {
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+}
+.father > div {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.349);
+}
+.child1 {
+  grid-row: span 3;
+  align-content: center;
+  padding: 10px;
+  .for-img-detail {
+    align-content: center;
+    background: linear-gradient(
+          90deg,
+          var(--primary-color) 10%,
+          rgba(33, 150, 243, 0) 70%
+        );
+    border-color: var(--primary-color) ;
+    border-width: 2px ;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    .img {
+        overflow: hidden;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        align-content: center;
+        display: inline-block;
+        img {
+          height: 100%;
+        }
+      }
+      .detail {
+        display: inline-block;
+      }
+  }
+  
+}
+.child2 {
+  grid-row: span 9;
+}
+
+@media (min-width: 768px) {
+  .father {
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: none;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .father > div {
+    height: 100%;
+  }
+  .child1 {
+    grid-column: span 4;
+    grid-row: auto;
+  }
+  .child2 {
+    grid-column: span 8;
+    grid-row: auto;
+  }
+}
+
+.please-login {
+  grid-column: span 12;
+  text-align: center;
+  align-content: center;
+}

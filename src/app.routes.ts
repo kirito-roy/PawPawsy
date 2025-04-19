@@ -6,6 +6,7 @@ import { AuthGuard } from 'src/app/components/core/services/guards/auth.guard';
 import { LoginComponent } from './app/pages/login/login.component';
 import { RegisterComponent } from './app/pages/register/register.component';
 import { AppBaseComponent } from './app/components/app-base/app-base.component';
+import { UserProfileComponent } from './app/components/app-base/user-profile/user-profile.component';
 
 export const appRoutes: Routes = [
   {
@@ -27,6 +28,9 @@ export const appRoutes: Routes = [
         loadChildren: () => import('./app/pages/uikit/uikit.routes'),
       },
       { path: 'pages', loadChildren: () => import('./app/pages/pages.routes') },
+      {
+        path:'user', component:UserProfileComponent
+      }
     ],
   },
   {path: 'login', component:LoginComponent},

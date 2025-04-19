@@ -173,11 +173,17 @@
     src: local('Lato'), url('https://fonts.cdnfonts.com/s/14882/Lato-BlackItalic.woff') format('woff');
 }
 
-// .cards {
-//     background-image: url("assets/img/feather1.jpg");
-//     background-size: cover;
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-attachment: fixed;
+.cards {
+    background-image: url("assets/img/cat2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    height: calc(100vh - 8rem);
+
     
-//   }
+    
+  }

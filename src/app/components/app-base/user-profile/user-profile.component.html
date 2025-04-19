@@ -1,0 +1,12 @@
+<div class="cards father">
+  <div *ngIf="!logedIN" class="please-login">Opps!!!! please login</div>
+  <div *ngIf="logedIN" class="card child1">
+    <div class="for-img-detail">
+      <div class="img">
+        <img *ngIf="imgSrc" [src]="imgSrc" alt="" />
+      </div>
+      <div class="detail">sdsd</div>
+    </div>
+  </div>
+  <div *ngIf="logedIN" class="card child2"></div>
+</div>
