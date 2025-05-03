@@ -1,12 +1,63 @@
-<div class="cards father">
+<div class="cards father grid gap-4 grid-rows-12  md:grid-cols-12 md:grid-rows-none ">
   <div *ngIf="!logedIN" class="please-login">Opps!!!! please login</div>
-  <div *ngIf="logedIN" class="card child1">
-    <div class="for-img-detail">
-      <div class="img">
-        <img *ngIf="imgSrc" [src]="imgSrc" alt="" />
+  <div *ngIf="logedIN" class="card child1 row-span-5  md:h-full md:col-span-4 md:row-span-12" style="padding-top: 0px">
+    <div class="for-img-detail h-40 flex justify-center items-center">
+      <img
+        *ngIf="imgSrc"
+        class="h-5/6 aspect-square rounded-full object-cove"
+        [src]="imgSrc"
+        alt=""
+      />
+    </div>
+    <div class="grid grid-cols-6">
+      <div class="detail col-span-5">
+        <div class="name">
+          <p *ngIf="!editFirstPanel" id="name">{{ userName }}</p>
+          <input
+            *ngIf="editFirstPanel"
+            id="input"
+            type="text"
+            pInputText
+            [(ngModel)]="userName"
+          />
+        </div>
+        <div class="email">
+          <p *ngIf="!editFirstPanel" id="email">{{ email }}</p>
+          <input
+            *ngIf="editFirstPanel"
+            id="input"
+            type="text"
+            pInputText
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="phone">
+          <p *ngIf="!editFirstPanel" id="phone">{{ phone }}</p>
+          <input
+            *ngIf="editFirstPanel"
+            id="input"
+            type="text"
+            pInputText
+            [(ngModel)]="phone"
+          />
+        </div>
       </div>
-      <div class="detail">sdsd</div>
+      <div class="edit">
+        <button
+          class=""
+          (click)="editFirstPanel = !editFirstPanel"
+          pButton
+          pRipple
+          type="button"
+        >
+          <span *ngIf="!editFirstPanel"
+            ><i class="pi pi-pen-to-square"></i
+          ></span>
+          <span *ngIf="editFirstPanel">
+          <i class="pi pi-save"></i></span>
+        </button>
+      </div>
     </div>
   </div>
-  <div *ngIf="logedIN" class="card child2"></div>
+  <div *ngIf="logedIN" class="card child2 row-span-7 md:h-full md:col-span-8 md:row-span-12"></div>
 </div>
