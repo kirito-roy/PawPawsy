@@ -1,20 +1,28 @@
-<div class="cards father grid gap-4 grid-rows-12  md:grid-cols-12 md:grid-rows-none ">
-  <div *ngIf="!logedIN" class="please-login">Opps!!!! please login</div>
-  <div *ngIf="logedIN" class="card child1 row-span-5  md:h-full md:col-span-4 md:row-span-12" style="padding-top: 0px">
-    <div class="for-img-detail h-40 flex justify-center items-center">
+<div
+  class="cards father grid grid-rows-12 md:gap-4 md:grid-cols-12 md:grid-rows-none"
+>
+  <div *ngIf="!logedIN" class="card">Opps!!!! please login</div>
+  <div
+    *ngIf="logedIN"
+    class="card child1 row-span-5 md:h-full md:col-span-4 md:row-span-12"
+    style="padding-top: 0px"
+  >
+    <div class="for-img-detail h-40 flex justify-center items-center md:h-64">
       <img
         *ngIf="imgSrc"
-        class="h-5/6 aspect-square rounded-full object-cove"
+        class="h-5/6 aspect-square rounded-full"
         [src]="imgSrc"
         alt=""
       />
     </div>
-    <div class="grid grid-cols-6">
-      <div class="detail col-span-5">
+    <div class="grid grid-cols-6 gap-2 md:mt-6">
+      <div class="detail col-span-5 ">
         <div class="name">
-          <p *ngIf="!editFirstPanel" id="name">{{ userName }}</p>
+          <p class="hidden mb-0 mt-2 md:block">User Name</p>
+          <!-- <p *ngIf="!editFirstPanel" id="name">{{ userName }}</p> -->
           <input
-            *ngIf="editFirstPanel"
+            [disabled]="!editFirstPanel"
+            class="w-full mt-2 md:mt-0"
             id="input"
             type="text"
             pInputText
@@ -22,29 +30,35 @@
           />
         </div>
         <div class="email">
-          <p *ngIf="!editFirstPanel" id="email">{{ email }}</p>
+          <p class="hidden mb-0 mt-2 md:block">Email</p>
+          <!-- <p id="email">{{ email }}</p> -->
+
+          <!-- <p *ngIf="!editFirstPanel" id="email">{{ email }}</p> -->
           <input
-            *ngIf="editFirstPanel"
+            [disabled]="true"
             id="input"
             type="text"
+            class="w-full mt-2 md:mt-0"
             pInputText
             [(ngModel)]="email"
           />
         </div>
         <div class="phone">
-          <p *ngIf="!editFirstPanel" id="phone">{{ phone }}</p>
+          <p class="hidden mb-0 mt-2 md:block">Phone</p>
+          <!-- <p *ngIf="!editFirstPanel" id="phone">{{ phone }}</p> -->
           <input
-            *ngIf="editFirstPanel"
+            [disabled]="!editFirstPanel"
             id="input"
             type="text"
+            class="w-full mt-2 md:mt-0"
             pInputText
             [(ngModel)]="phone"
           />
         </div>
       </div>
-      <div class="edit">
+      <div class="edit grid grid-rows-4 gap-2 ">
         <button
-          class=""
+          class="row-span-1"
           (click)="editFirstPanel = !editFirstPanel"
           pButton
           pRipple
@@ -53,11 +67,24 @@
           <span *ngIf="!editFirstPanel"
             ><i class="pi pi-pen-to-square"></i
           ></span>
-          <span *ngIf="editFirstPanel">
-          <i class="pi pi-save"></i></span>
+          <span *ngIf="editFirstPanel"> <i class="pi pi-times"></i></span>
+        </button>
+        <button
+          class="row-span-1"
+          (click)="updateUser()"
+          pButton
+          pRipple
+          *ngIf="editFirstPanel"
+          type="button"
+          
+        >
+        <i class="pi pi-save"></i>
         </button>
       </div>
     </div>
   </div>
-  <div *ngIf="logedIN" class="card child2 row-span-7 md:h-full md:col-span-8 md:row-span-12"></div>
+  <div
+    *ngIf="logedIN"
+    class="card child2 row-span-7 md:h-full md:col-span-8 md:row-span-12"
+  ></div>
 </div>
