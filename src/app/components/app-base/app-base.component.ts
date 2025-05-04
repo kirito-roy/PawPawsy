@@ -3,6 +3,9 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { TestService } from '../core/api/test/test.service';
 import { firstValueFrom, tap } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ProductCardComponent } from '../core/services/product-card/product-card.component';
+
+
 import { ToastService } from '../core/services/toast.service';
 import { Message } from 'primeng/message';
 import { CommonModule } from '@angular/common';
@@ -16,6 +19,7 @@ import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-base',
   imports: [
+    ProductCardComponent,
     RouterModule,
     ButtonModule,
     CommonModule,
