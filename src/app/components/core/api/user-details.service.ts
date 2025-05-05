@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserDetailsUpdate } from './model/user-details-update';
+// Removed incorrect import of 'json' from 'body-parser'
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,9 @@ export class UserDetailsService {
   }
 
   updateUserDetails(data: UserDetailsUpdate): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/updateDatails`, data);
+    const stringifiedData = JSON.stringify(data);
+    console.log(stringifiedData);
+    return this.http.post<any>(`${this.apiUrl}/updateDatails`, stringifiedData);
   }
 
 }
