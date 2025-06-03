@@ -1,0 +1,40 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="space-y-6 bg-white p-6 rounded-lg shadow-md">
+    <div class="flex flex-col">
+        <label for="image" class="text-sm font-medium text-gray-700">Image:</label>
+        <input type="file" id="image" name="image" formControlName="productImage" accept="image/*" 
+               (change)="onFileChange($event)"
+               class="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        <div class="text-red-500 text-sm mt-2" *ngIf="imageError">
+          {{ imageError }}
+        </div>
+    </div>
+    <div class="flex flex-col">
+        <label for="name" class="text-sm font-medium text-gray-700">Name:</label>
+        <input type="text" id="name" name="name" formControlName="productName" required 
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+    </div>
+    <div class="flex flex-col">
+        <label for="price" class="text-sm font-medium text-gray-700">Price:</label>
+        <input type="number" id="price" name="price" formControlName="productPrice" required 
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+    </div>
+    <div class="flex flex-col">
+        <label for="details" class="text-sm font-medium text-gray-700">Details:</label>
+        <textarea id="details" name="details" rows="4" formControlName="productDescription" required 
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+    </div>
+    <div class="flex flex-col">
+        <label for="category" class="text-sm font-medium text-gray-700">Category:</label>
+        <select id="category" formControlName="productCategory" name="category" required 
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <option value="" disabled selected>Select a category</option>
+            <option value="cat">cat</option>
+            <option value="dog">dog</option>
+            <option value="rat">rat</option>
+        </select>
+    </div>
+    <button type="submit" 
+            class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        Submit
+    </button>
+</form>

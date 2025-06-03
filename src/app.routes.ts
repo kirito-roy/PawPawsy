@@ -6,6 +6,7 @@ import { AuthGuard } from 'src/app/components/core/services/guards/auth.guard';
 import { LoginComponent } from './app/pages/login/login.component';
 import { RegisterComponent } from './app/pages/register/register.component';
 import { AppBaseComponent } from './app/components/app-base/app-base.component';
+import { AdminComponent } from './app/components/app-base/admin/admin.component';
 
 export const appRoutes: Routes = [
   {
@@ -16,6 +17,10 @@ export const appRoutes: Routes = [
         path: '',
         component: AppBaseComponent,
         // canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
       },
       {
         path: 'home',
