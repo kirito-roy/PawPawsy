@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { TestService } from '../core/api/test/test.service';
-import { firstValueFrom, tap } from 'rxjs';
+import { firstValueFrom, pipe, tap } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ProductCardComponent } from '../core/services/product-card/product-card.component';
 
@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
+import { DataEntryService } from '../core/api/data-entry.service';
 
 @Component({
   selector: 'app-base',
@@ -35,20 +36,38 @@ import { ToastModule } from 'primeng/toast';
   providers: [MessageService],
 })
 export class AppBaseComponent {
+  value: any[] = [];
   constructor(
     private router: Router,
     private test: TestService,
     private toastService: ToastService,
     private service: MessageService,
+    private getApiData: DataEntryService
   ) {}
   form!: FormGroup;
-  ngOnInit(): void {
+  async ngOnInit() {
     this.form = new FormGroup({
       id: new FormControl(''),
     });
     this.form.setValue({
       id: 1,
     });
+    await firstValueFrom(this.getApiData.GetData().pipe(
+      tap((res) => {
+        try {
+          
+          if(res.status == 'success'){
+            this.value = res.result
+          this.toastService.showSuccess(res.status, false);
+          }else{
+            this.toastService.showError(res.status, false);
+          }
+        } catch (e) {
+          this.toastService.showError('Error', false);
+        }
+      }
+      ),
+    ));
   }
 
   async testapi() {

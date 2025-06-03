@@ -4,4 +4,16 @@
 <div class="card">sdd</div>
 <a [routerLink]="['/home']" routerLinkActive="router-link-active" >sdsds</a>
 <p-button type="button" label="Click Me" icon="pi pi-check" iconPos="left" [disabled]="false" styleClass="custom-button" (click)="testapi()"></p-button>
-<app-product-card image="assets/img/cat2.jpg" optionName="British Cat" price="30000" Delivery_date="20th April,2025"></app-product-card>
+<div class="lg:flex lg:justify-center">
+  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:px-8 lg:max-w-6xl w-full">
+      <div *ngFor="let v of value">
+          <app-product-card 
+              [image]="v.productImage" 
+              [optionName]="v.productName" 
+              [price]="v.productPrice" 
+              [Delivery_date]="v.Delivery_date"
+              >
+          </app-product-card>
+      </div>
+  </div>
+</div>
