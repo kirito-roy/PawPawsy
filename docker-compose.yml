@@ -1,0 +1,10 @@
+services:
+  angular:
+    build: .
+    ports:
+      - "7689:7689" # For dev (ng serve)
+    volumes:
+      - .:/app # Hot reload
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
