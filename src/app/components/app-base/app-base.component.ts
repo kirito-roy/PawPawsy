@@ -72,7 +72,7 @@ export class AppBaseComponent {
 
   async testapi() {
     await firstValueFrom(
-      this.test.testDATA(1).pipe(
+      this.test.testDATA().pipe(
         tap((res) => {
           try {
             console.log(res);
