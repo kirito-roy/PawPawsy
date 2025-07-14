@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://petbackend.roy184433.workers.dev/api/user';
+  private apiUrl = `${environment.apiurl}auth`;
   private tokenKey = 'token';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(
     this.hasToken(),
