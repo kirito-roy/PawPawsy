@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Search } from './model/search';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
-  private apiUrl = 'https://petbackend.roy184433.workers.dev/api';
+  private apiUrl = environment.apiurl;
 
   constructor(private http: HttpClient, private router: Router) {}
   searchDATA(query: Search): Observable<any> {
