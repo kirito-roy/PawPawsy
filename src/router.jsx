@@ -112,7 +112,7 @@ export const routes = [
         name: "My Profile",
         path: "/profile",
         element: <ProfilePage />,
-        sidebar: true,
+        sidebar: false,
       },
       {
         icon: <UserCircleIcon {...icon} />,

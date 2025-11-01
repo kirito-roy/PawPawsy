@@ -1,4 +1,7 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Navbar,
   Typography,
@@ -8,42 +11,37 @@ import {
   Input,
   Menu,
   MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
+  Drawer,
 } from "@material-tailwind/react";
 import { Sidenav } from "/src/components/layouts/layout";
 import {
   UserCircleIcon,
-  Cog6ToothIcon,
   BellIcon,
-  ClockIcon,
-  CreditCardIcon,
   Bars3Icon,
+  XMarkIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
-import { Dialog } from "primereact/dialog";
-import { Sidebar } from "primereact/sidebar";
 
-import { useState } from "react";
-import {
-  useMaterialTailwindController,
-  setOpenConfigurator,
-  setOpenSidenav,
-} from "@/components/context";
+import { useMaterialTailwindController } from "@/components/context";
 import { useAuth } from "@/components/auth/AuthContext";
 
 // Import ThemeToggle component
 import { ThemeToggle, ThemeToggleLine } from "@/components/ThemeToggle"; // Adjust path if necessary
-import { Image } from "primereact/image";
+
 export function DashboardNavbar({ routegiven }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
   const { logout } = useAuth(); // Destructure the logout function from useAuth
-  const [topDialog, settopDialog] = useState(false);
-  const [sidebar, setsidebar] = useState(false);
-  const [position, setPosition] = useState("center");
+  const navigate = useNavigate();
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const openDrawer = () => setIsDrawerOpen(true);
+  const closeDrawer = () => setIsDrawerOpen(false);
+  const toggleSearch = () => setIsSearchOpen((prev) => !prev);
 
   return (
     <div className=" w-full ">
@@ -51,16 +49,16 @@ export function DashboardNavbar({ routegiven }) {
         <div className="w-full capitalize ">
           <div className="w-full items-center flex justify-between mb-4">
             <div className="flex flex-row items-center">
-              <div className="h-10 mx-3 flex flex-col">
+              <div className="h-14 mx-3 flex flex-col">
                 <img
                   src="/img/animal.png"
                   alt=""
-                  className="h-full aspect-square  block dark:hidden"
+                  className="h-full grayscale aspect-square  block dark:hidden"
                 />
                 <img
                   src="/img/animal.png"
                   alt=""
-                  className="h-full aspect-square hidden dark:block"
+                  className="h-full invert aspect-square hidden dark:block"
                 />
               </div>
               <Breadcrumbs
@@ -119,52 +117,74 @@ export function DashboardNavbar({ routegiven }) {
         </div>
       </div>
       <div className="block md:hidden">
-        <Dialog
-          header="Search"
-          visible={topDialog}
-          position="top"
-          style={{ width: "95vw" }}
-          onHide={() => {
-            if (!topDialog) return;
-            settopDialog(false);
-          }}
-          draggable={false}
-          resizable={false}
-        >
-          <div className="mr-auto pt-1 md:mr-4 md:w-56">
-            <Input label="Search" />
-          </div>
-        </Dialog>
-        <Sidebar
-          visible={sidebar}
-          position="right"
-          header="Menu"
-          onHide={() => setsidebar(false)}
+        <AnimatePresence>
+          {isSearchOpen && (
+            <motion.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -50, opacity: 0 }}
+              transition={{ type: "tween" }}
+              className="w-full mb-2"
+            >
+              <Input label="Search" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Drawer
+          placement="right"
+          open={isDrawerOpen}
+          onClose={closeDrawer}
+          overlay={false}
           className="bg-white dark:bg-gray-800 text-primarytext dark:text-primarytext-dark"
         >
-          <div className="flex flex-col gap-4">
-            <Button
-              variant="text"
-              className="items-center text-primarytext dark:text-primarytext-dark gap-1 px-4 normal-case xl:flex"
-              onClick={logout}
+          <div className="flex items-center justify-between p-4">
+            <Typography
+              variant="h5"
+              color="blue-gray"
+              className="dark:text-white"
             >
-              <UserCircleIcon className="w-5 h-5 text-blue-gray-500" />
-              Log out
-            </Button>
-
-            {/* Theme Toggle Button - Integrated cleanly into the navbar */}
-            <ThemeToggleLine />
+              Menu
+            </Typography>
+            <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+              <XMarkIcon strokeWidth={2} className="h-5 w-5" />
+            </IconButton>
           </div>
-        </Sidebar>
+          <div className="flex flex-col gap-4 p-4">
+            <div className="flex items-center justify-between"> 
+              {/* Theme Toggle Button - Integrated cleanly into the navbar */}
+              <ThemeToggle/>
+                    <Button
+                variant="text"
+                className="items-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md hover:shadow-lg transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 gap-1 px-4 normal-case xl:flex"
+              >
+                      <BellIcon className="w-5 h-5 rounded-full " />
+                    </Button>
+              <Button
+                variant="text"
+                className="items-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md hover:shadow-lg transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 gap-1 px-4 normal-case xl:flex"
+                onClick={() => navigate(`/${layout}/profile`)}
+              >
+                <UserCircleIcon className="w-5 h-5" />
+              </Button>
+            </div>
 
-        <div className="flex justify-between  items-center flex-col">
-          <div className="flex justify-between w-full mb-2">
+            <Sidenav routes={routegiven} />
+          </div>
+        </Drawer>
+
+        <div className="flex flex-col items-center justify-between">
+          <div className="flex w-full items-center justify-between mb-2">
             <div className="items-center w-full capitalize flex flex-row">
               <div className="h-8 mr-3">
                 <img
                   src="/img/animal.png"
                   alt=""
-                  className="h-full aspect-square"
+                  className="h-full grayscale aspect-square block dark:hidden"
+                />
+                <img
+                  src="/img/animal.png"
+                  alt=""
+                  className="h-full invert aspect-square hidden dark:block"
                 />
               </div>
               <Breadcrumbs
@@ -193,27 +213,19 @@ export function DashboardNavbar({ routegiven }) {
               </Breadcrumbs>
             </div>
             <div className="flex items-center">
-              <button onClick={() => settopDialog(true)}>
-                <svg
-                  className="h-6 w-6 text-gray-500"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.553 15.553a7.06 7.06 0 1 0-9.985-9.985a7.06 7.06 0 0 0 9.985 9.985m0 0L20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                  />
-                </svg>
-              </button>
+              <IconButton
+                variant="text"
+                color="blue-gray"
+                onClick={toggleSearch}
+                className="mr-2"
+              >
+                <MagnifyingGlassIcon className="h-6 w-6 text-gray-500" />
+              </IconButton>
               <IconButton
                 variant="text"
                 color="blue-gray"
                 className="grid xl:hidden"
-                onClick={() => setsidebar(true)}
+                onClick={openDrawer}
               >
                 <Bars3Icon
                   strokeWidth={3}
@@ -222,15 +234,14 @@ export function DashboardNavbar({ routegiven }) {
               </IconButton>
             </div>
           </div>
-          <div className="w-full">
-            <Sidenav routes={routegiven} />
-          </div>
+          <div className="w-full">{/* <Sidenav routes={routegiven} /> */}</div>
         </div>
       </div>
     </div>
   );
 }
 
-DashboardNavbar.displayName = "/src/widgets/layout/dashboard-navbar.jsx";
+DashboardNavbar.displayName =
+  "/src/components/layouts/layout/dashboard-navbar.jsx";
 
 export default DashboardNavbar;

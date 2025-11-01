@@ -9,7 +9,7 @@ export function Dashboard() {
   return (
     <div className="min-h-svh w-full bg-secondary dark:bg-secondary-dark ">
       <div className="grid p-4 ">
-        <div className="p-4 pb-0  shadow-lg bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-blue-gray-500/5">
+        <div className="p-4 pb-0  shadow-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-xl shadow-blue-gray-500/5 dark:shadow-blue-gray-200/5">
           <DashboardNavbar
             routegiven={routes.filter((r) => r.layout === "dashboard")}
           />
