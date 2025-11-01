@@ -53,12 +53,12 @@ export function DashboardNavbar({ routegiven }) {
             <div className="flex flex-row items-center">
               <div className="h-10 mx-3 flex flex-col">
                 <img
-                  src="/img/content-creation.png"
+                  src="/img/animal.png"
                   alt=""
-                  className="h-full aspect-square block dark:hidden"
+                  className="h-full aspect-square  block dark:hidden"
                 />
                 <img
-                  src="/img/dark_content_image.png"
+                  src="/img/animal.png"
                   alt=""
                   className="h-full aspect-square hidden dark:block"
                 />
@@ -162,7 +162,7 @@ export function DashboardNavbar({ routegiven }) {
             <div className="items-center w-full capitalize flex flex-row">
               <div className="h-8 mr-3">
                 <img
-                  src="/img/content-creation.png"
+                  src="/img/animal.png"
                   alt=""
                   className="h-full aspect-square"
                 />

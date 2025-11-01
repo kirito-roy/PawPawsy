@@ -63,7 +63,7 @@ function UploadBlog() {
               placeholder="Enter a catchy title..."
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 sm:px-4 sm:py-3 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none sm:text-base"
+              className="w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 sm:px-4 sm:py-3 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden sm:text-base"
             />
           </div>
 
@@ -75,7 +75,7 @@ function UploadBlog() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 sm:px-4 sm:py-3 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none sm:text-base"
+              className="w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 sm:px-4 sm:py-3 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden sm:text-base"
             >
               <option value="">Select a category</option>
               {categories.map((cat) => (

@@ -294,7 +294,7 @@ export default function BlogView() {
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="Write your comment here..."
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-hidden dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
               rows="4"
               disabled={isSubmitting}
             ></textarea>
@@ -320,7 +320,7 @@ export default function BlogView() {
                 className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg dark:bg-gray-900/50"
               >
                 <UserCircleIcon className="w-10 h-10 text-gray-400 shrink-0" />
-                <div className="flex-grow">
+                <div className="grow">
                   <div className="flex items-center gap-2">
                     <p className="font-semibold text-gray-800 dark:text-gray-200">
                       {comment.author?.name || "Anonymous"}
@@ -345,7 +345,7 @@ export default function BlogView() {
 
       {/* Share Modal */}
       {isShareModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-xl dark:bg-gray-800">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Share this Blog Post
@@ -358,18 +358,18 @@ export default function BlogView() {
                 type="text"
                 readOnly
                 value={window.location.href}
-                className="w-full px-3 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:outline-none"
+                className="w-full px-3 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:outline-hidden"
               />
               <button
                 onClick={copyToClipboard}
-                className="w-24 px-4 py-2 font-semibold text-white bg-purple-600 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-24 px-4 py-2 font-semibold text-white bg-purple-600 rounded-md hover:bg-purple-700 focus:outline-hidden focus:ring-2 focus:ring-purple-500"
               >
                 {copySuccess || "Copy"}
               </button>
             </div>
             <button
               onClick={() => setIsShareModalOpen(false)}
-              className="w-full px-4 py-2 mt-4 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400"
+              className="w-full px-4 py-2 mt-4 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-500 focus:outline-hidden focus:ring-2 focus:ring-gray-400"
             >
               Close
             </button>

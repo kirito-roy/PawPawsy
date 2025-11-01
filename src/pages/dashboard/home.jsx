@@ -40,7 +40,7 @@ const BlogCard = ({ blog, onVoteUpdate, onMenuToggle }) => {
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-transform hover:scale-[1.02] duration-300 flex flex-col">
       <div className="flex justify-between items-start p-4">
         {/* Left side content */}
-        <div className="flex-grow pr-4">
+        <div className="grow pr-4">
           {/* Author Info */}
           <div className="flex items-center gap-3 mb-4">
             <UserCircleIcon className="h-10 w-10 text-gray-400" />
@@ -77,7 +77,7 @@ const BlogCard = ({ blog, onVoteUpdate, onMenuToggle }) => {
         </div>
 
         {/* Right side image and menu button */}
-        <div className="flex-shrink-0 flex flex-col items-end gap-2">
+        <div className="shrink-0 flex flex-col items-end gap-2">
           {blog.attachedImages?.length > 0 && (
             <img
               src={`data:${blog.attachedImages[0].contentType};base64,${blog.attachedImages[0].data}`}
@@ -146,30 +146,30 @@ const BlogCard = ({ blog, onVoteUpdate, onMenuToggle }) => {
 
 const SkeletonCard = () => (
   <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden animate-pulse flex flex-col">
-    <div className="flex justify-between items-start p-4 flex-grow">
+    <div className="flex justify-between items-start p-4 grow">
       {/* Left side skeleton */}
-      <div className="flex-grow pr-4">
+      <div className="grow pr-4">
         {/* Author skeleton */}
         <div className="flex items-center gap-3 mb-4">
           <div className="h-10 w-10 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
           <div className="flex-1">
-            <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/3"></div>
-            <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-1/4 mt-2"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/3"></div>
+            <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/4 mt-2"></div>
           </div>
         </div>
         {/* Content skeleton */}
-        <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
-        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2 mb-4"></div>
-        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/4"></div>
+        <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded-sm w-3/4 mb-2"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/2 mb-4"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/4"></div>
       </div>
       {/* Right side image skeleton */}
-      <div className="flex-shrink-0">
+      <div className="shrink-0">
         <div className="w-32 h-32 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
       </div>
     </div>
     {/* Footer skeleton */}
     <div className="px-4 py-3 bg-gray-50 dark:bg-gray-900/50 border-t dark:border-gray-700">
-      <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-1/4"></div>
+      <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/4"></div>
     </div>
   </div>
 );
@@ -424,7 +424,7 @@ function Home() {
             icon="pi pi-check"
             onClick={handleReportSubmit}
             autoFocus
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
+            className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
           />
         </div>
       </Dialog>

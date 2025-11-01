@@ -7,7 +7,7 @@ export const ThemeToggleLine = () => {
     <>
       <button
         onClick={toggleTheme}
-        className=" flex flex-row justify-between p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+        className=" flex flex-row justify-between p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md hover:shadow-lg transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
         aria-label="Toggle theme"
       >
         <div
@@ -37,7 +37,7 @@ export const ThemeToggleLine = () => {
             </g>
           </svg>
         </div>
-        <span className="flex-grow text-center font-bold">
+        <span className="grow text-center font-bold">
           {theme === "light" ? "Light" : "Dark"}
         </span>
         <div
@@ -76,7 +76,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md hover:shadow-lg transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
       aria-label="Toggle theme"
     >
       {theme === "light" ? (

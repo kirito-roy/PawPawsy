@@ -142,7 +142,7 @@ export function Forgotpassword() {
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+                                        className="w-full px-3 py-2 border rounded-md focus:outline-hidden focus:border-indigo-500"
                                         disabled={loading}
                                     />
                                     <label
@@ -183,7 +183,7 @@ export function Forgotpassword() {
                                         id="otp"
                                         value={otp}
                                         onChange={(e) => setOtp(e.target.value)}
-                                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+                                        className="w-full px-3 py-2 border rounded-md focus:outline-hidden focus:border-indigo-500"
                                         disabled={loading}
                                     />
                                     <label htmlFor="otp">Enter OTP</label>
@@ -198,7 +198,7 @@ export function Forgotpassword() {
                                         value={newPassword}
                                         onChange={(e) => setNewPassword(e.target.value)}
                                         className="w-full"
-                                        inputClassName="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+                                        inputClassName="w-full px-3 py-2 border rounded-md focus:outline-hidden focus:border-indigo-500"
                                         feedback={false}
                                         disabled={loading}
                                     />
@@ -214,7 +214,7 @@ export function Forgotpassword() {
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                         className="w-full"
-                                        inputClassName="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+                                        inputClassName="w-full px-3 py-2 border rounded-md focus:outline-hidden focus:border-indigo-500"
                                         feedback={false}
                                         disabled={loading}
                                     />

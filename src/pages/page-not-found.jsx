@@ -7,7 +7,7 @@ import FuzzyText from "@/components/FuzzyText";
 export default function PageNotFound() {
   return (
     <section className="flex flex-col items-center justify-center min-h-screen px-6 py-12 text-center bg-white dark:bg-gray-900">
-      <div className="mt-[-4rem] flex flex-col items-center">
+      <div className="-mt-16 flex flex-col items-center">
         {/* Fuzzy 404 */}
         <FuzzyText
           fontSize="clamp(2rem, 10vw, 10rem)"

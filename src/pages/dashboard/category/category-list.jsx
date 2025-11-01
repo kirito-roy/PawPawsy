@@ -303,7 +303,7 @@ function CategoryList() {
           setEditId(null);
           setNewCategory("");
         }}
-        className="w-[28rem] min-w-[28rem] bg-white shadow-lg rounded-lg dark:bg-gray-800"
+        className="w-md min-w-md bg-white shadow-lg rounded-lg dark:bg-gray-800"
         footer={
           <div className="flex justify-end gap-3">
             <Button
@@ -341,7 +341,7 @@ function CategoryList() {
         header="Delete Category Options"
         visible={deleteDialogVisible}
         onHide={() => setDeleteDialogVisible(false)}
-        className="w-[32rem] min-w-[32rem] bg-white shadow-lg rounded-lg dark:bg-gray-800"
+        className="w-lg min-w-lg bg-white shadow-lg rounded-lg dark:bg-gray-800"
         footer={
           <div className="flex justify-end gap-3">
             <Button
@@ -413,7 +413,7 @@ function CategoryList() {
                   id="transferCategory"
                   value={transferToId}
                   onChange={(e) => setTransferToId(e.target.value)}
-                  className="w-full px-3 py-2 text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full px-3 py-2 text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden"
                 >
                   <option value="" disabled>
                     Select a category

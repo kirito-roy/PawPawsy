@@ -214,7 +214,7 @@ function UserManagement() {
   return (
     <div className="p-6 mt-9">
       <div className="font-bold text-center flex flex-col items-center justify-center w-full">
-        <h2 className="text-5xl md:text-5xl font-extrabold text-center mb-6 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+        <h2 className="text-5xl md:text-5xl font-extrabold text-center mb-6 bg-linear-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
           User Records and Permissions
         </h2>
       </div>
@@ -235,7 +235,7 @@ function UserManagement() {
       {/* 🖥️ Desktop Table */}
       <div className="hidden md:block overflow-hidden rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
         <table className="w-full border-collapse">
-          <thead className="bg-gradient-to-r from-purple-600 to-indigo-600">
+          <thead className="bg-linear-to-r from-purple-600 to-indigo-600">
             <tr>
               {headerConfig.map(({ label, key, sortable = true }) => (
                 <th
@@ -432,7 +432,7 @@ function UserManagement() {
       {/* Edit Dialog */}
       <Dialog
         header={
-          <div className="text-xl font-semibold text-white bg-gradient-to-r from-purple-500 via-indigo-600 to-blue-600 px-5 py-3 rounded-t-lg shadow">
+          <div className="text-xl font-semibold text-white bg-linear-to-r from-purple-500 via-indigo-600 to-blue-600 px-5 py-3 rounded-t-lg shadow">
             Edit User
           </div>
         }
@@ -503,7 +503,7 @@ function UserManagement() {
                 onChange={(e) =>
                   handleEditChange("suspended", e.target.checked)
                 }
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded-sm border-gray-300 text-indigo-600 focus:ring-indigo-500"
               />
               <label
                 htmlFor="suspended"
@@ -523,7 +523,7 @@ function UserManagement() {
               </button>
               <button
                 onClick={handleEditSave}
-                className="px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-200 ease-in-out flex items-center gap-2"
+                className="px-5 py-2 rounded-lg bg-linear-to-r from-indigo-500 to-purple-600 text-white font-medium shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-200 ease-in-out flex items-center gap-2"
               >
                 <CheckIcon className="w-5 h-5" />
                 Save

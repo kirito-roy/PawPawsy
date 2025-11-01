@@ -4,7 +4,7 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 
 function SuspendedPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-linear-to-br from-gray-100 via-gray-200 to-gray-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-md w-full p-8 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 text-center">
         {/* Warning Icon */}
         <div className="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/40 shadow-md">
@@ -30,7 +30,7 @@ function SuspendedPage() {
 
         {/* CTA Button */}
         <Link to="/" className="block mt-8">
-          <button className="w-full px-6 py-3 font-semibold text-white rounded-xl shadow-md bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transform hover:scale-[1.02] transition-all">
+          <button className="w-full px-6 py-3 font-semibold text-white rounded-xl shadow-md bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transform hover:scale-[1.02] transition-all">
             Go to Homepage
           </button>
         </Link>

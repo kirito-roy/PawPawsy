@@ -192,7 +192,7 @@ export default function CreateBlog() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900
-                       focus:outline-none focus:ring-2 focus:ring-purple-500 dark:border-gray-700
+                       focus:outline-hidden focus:ring-2 focus:ring-purple-500 dark:border-gray-700
                        dark:bg-gray-800 dark:text-gray-100"
             />
             {errors.title && (
@@ -208,7 +208,7 @@ export default function CreateBlog() {
               value={subtitle}
               onChange={(e) => setSubtitle(e.target.value)}
               className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900
-                       focus:outline-none focus:ring-2 focus:ring-purple-500 dark:border-gray-700
+                       focus:outline-hidden focus:ring-2 focus:ring-purple-500 dark:border-gray-700
                        dark:bg-gray-800 dark:text-gray-100"
             />
             {errors.subtitle && (
@@ -242,7 +242,7 @@ export default function CreateBlog() {
                   )
                 }
                 className="w-full appearance-none rounded-xl border border-gray-300 bg-gray-50 px-4 py-3
-                           pr-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500
+                           pr-10 text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-purple-500
                            dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
               >
                 <option value="" disabled>
@@ -282,7 +282,7 @@ export default function CreateBlog() {
                 type="button"
                 onClick={handleChooseFile}
                 className="rounded-xl border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700
-                           hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500
+                           hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-purple-500
                            dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
               >
                 Upload Cover Image
@@ -299,7 +299,7 @@ export default function CreateBlog() {
               type="button"
               onClick={() => setPreviewOpen(true)}
               className="w-full rounded-xl border border-purple-500 px-5 py-3 font-medium text-purple-600
-                         hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500
+                         hover:bg-purple-50 focus:outline-hidden focus:ring-2 focus:ring-purple-500
                          dark:text-purple-400 dark:hover:bg-purple-900/20"
             >
               👀 Preview
@@ -308,7 +308,7 @@ export default function CreateBlog() {
             <button
               type="submit"
               className="w-full rounded-xl bg-purple-600 px-5 py-3 font-semibold text-white
-                         shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                         shadow-sm hover:bg-purple-700 focus:outline-hidden focus:ring-2 focus:ring-purple-500"
             >
               ✅ Save & Publish
             </button>

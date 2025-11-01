@@ -187,7 +187,7 @@ export default function BlogEditPage() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Blog Title..."
-            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
           />
           {errors.title && (
             <p className="mt-1 text-sm text-red-600">{errors.title}</p>
@@ -198,7 +198,7 @@ export default function BlogEditPage() {
             value={subtitle}
             onChange={(e) => setSubtitle(e.target.value)}
             placeholder="Blog Subtitle..."
-            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
           />
           {errors.subtitle && (
             <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
@@ -222,7 +222,7 @@ export default function BlogEditPage() {
                 categories.find((c) => c._id === e.target.value) || null
               )
             }
-            className="w-full appearance-none rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 pr-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+            className="w-full appearance-none rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 pr-10 text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-purple-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
           >
             <option value="" disabled>
               Choose category…
@@ -283,7 +283,7 @@ export default function BlogEditPage() {
           <div className="mt-6">
             <button
               type="submit"
-              className="w-full rounded-xl bg-purple-600 px-5 py-3 font-semibold text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full rounded-xl bg-purple-600 px-5 py-3 font-semibold text-white shadow-sm hover:bg-purple-700 focus:outline-hidden focus:ring-2 focus:ring-purple-500"
             >
               💾 Update Blog
             </button>

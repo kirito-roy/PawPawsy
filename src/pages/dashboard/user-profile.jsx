@@ -124,7 +124,7 @@ export function UserProfilePage() {
       <Card className="shadow-lg dark:bg-gray-800">
         <CardBody>
           <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left md:gap-8">
-            <div className="relative flex-shrink-0 mb-4 md:mb-0">
+            <div className="relative shrink-0 mb-4 md:mb-0">
               {profile?.profilePicture ? (
                 <img
                   src={
@@ -144,9 +144,9 @@ export function UserProfilePage() {
                 />
               )}
             </div>
-            <div className="flex-grow w-full">
+            <div className="grow w-full">
               <div className="flex justify-between items-start">
-                <div className="flex-grow">
+                <div className="grow">
                   <Typography
                     variant="h4"
                     color="blue-gray"
@@ -283,14 +283,14 @@ export function UserProfilePage() {
                   <img
                     src={`data:${blog.attachedImages[0].contentType};base64,${blog.attachedImages[0].data}`}
                     alt={blog.blogTitle}
-                    className="flex-shrink-0 object-cover w-16 h-16 rounded-lg"
+                    className="shrink-0 object-cover w-16 h-16 rounded-lg"
                   />
                 ) : (
-                  <div className="flex items-center justify-center flex-shrink-0 w-16 h-16 text-gray-500 bg-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-center shrink-0 w-16 h-16 text-gray-500 bg-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-400">
                     📷
                   </div>
                 )}
-                <div className="flex-grow">
+                <div className="grow">
                   <Link to={`/dashboard/blog-viewer/${blog._id}`}>
                     <h3 className="text-md font-semibold text-blue-600 hover:underline dark:text-blue-400">
                       {blog.blogTitle}

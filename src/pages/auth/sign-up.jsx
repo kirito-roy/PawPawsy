@@ -148,7 +148,7 @@ export function SignUp() {
   };
 
   return (
-    <div className="flex min-h-screen transition-colors duration-300 bg-gradient-to-r from-red-50 to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="flex min-h-screen transition-colors duration-300 bg-linear-to-r from-red-50 to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Left side */}
       <div className="items-center justify-center hidden w-1/2 p-10 lg:flex">
         <motion.div
@@ -281,7 +281,7 @@ export function SignUp() {
 
               <motion.div whileHover={{ scale: 1.02 }}>
                 <Button
-                  className="w-full text-white bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600"
+                  className="w-full text-white bg-linear-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600"
                   type="submit"
                 >
                   Send OTP

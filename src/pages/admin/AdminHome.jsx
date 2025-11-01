@@ -68,7 +68,7 @@ function AdminHome() {
       {/* Top Overview Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* Total Blogs Card */}
-        <Card className="shadow-xl bg-gradient-to-br from-purple-600 to-indigo-600 text-white rounded-2xl transition transform hover:scale-105 hover:shadow-2xl">
+        <Card className="shadow-xl bg-linear-to-br from-purple-600 to-indigo-600 text-white rounded-2xl transition transform hover:scale-105 hover:shadow-2xl">
           <CardBody>
             <div className="flex items-center justify-between">
               <Typography variant="h3" className="text-white ">
@@ -85,7 +85,7 @@ function AdminHome() {
               as="a"
               href="#user-contributions-table"
               onClick={() => toggleCard("totalBlogs")}
-              className="text-base font-medium text-purple-100 hover:text-white underline mt-2 cursor-pointer focus:outline-none"
+              className="text-base font-medium text-purple-100 hover:text-white underline mt-2 cursor-pointer focus:outline-hidden"
             >
               Click here for details
             </Typography>
@@ -93,7 +93,7 @@ function AdminHome() {
         </Card>
 
         {/* Total Users Card */}
-        <Card className="shadow-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-2xl transition transform hover:scale-105 hover:shadow-2xl">
+        <Card className="shadow-xl bg-linear-to-br from-purple-500 to-pink-500 text-white rounded-2xl transition transform hover:scale-105 hover:shadow-2xl">
           <CardBody>
             <div className="flex items-center justify-between">
               <Typography variant="h3" className="text-white ">
@@ -110,7 +110,7 @@ function AdminHome() {
               as="a"
               href="#user-contributions-table"
               onClick={() => toggleCard("totalUsers")}
-              className="text-base font-medium text-purple-100 hover:text-white underline mt-2 cursor-pointer focus:outline-none"
+              className="text-base font-medium text-purple-100 hover:text-white underline mt-2 cursor-pointer focus:outline-hidden"
             >
               Click here for details
             </Typography>
@@ -118,7 +118,7 @@ function AdminHome() {
         </Card>
 
         {/* Total Categories Card */}
-        <Card className="shadow-xl bg-gradient-to-br from-green-500 to-teal-500 text-white rounded-2xl transition transform hover:scale-105 hover:shadow-2xl">
+        <Card className="shadow-xl bg-linear-to-br from-green-500 to-teal-500 text-white rounded-2xl transition transform hover:scale-105 hover:shadow-2xl">
           <CardBody>
             <div className="flex items-center justify-between">
               <Typography variant="h3" className="text-white ">

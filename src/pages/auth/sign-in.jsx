@@ -78,7 +78,7 @@ export function SignIn() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 via-pink-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="flex min-h-screen bg-linear-to-br from-blue-50 via-pink-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Left Side - Background with text */}
       <div
         className="relative hidden w-1/2 mx-8 my-24 flex-col justify-center overflow-hidden rounded-2xl bg-cover bg-center px-16 md:flex"
@@ -88,7 +88,7 @@ export function SignIn() {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-xs" />
         <div className="relative z-10 space-y-6">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -179,7 +179,7 @@ export function SignIn() {
                 value={email}
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-md border px-3 py-2 focus:border-indigo-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:focus:border-indigo-400"
+                className="w-full rounded-md border px-3 py-2 focus:border-indigo-500 focus:outline-hidden dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:focus:border-indigo-400"
               />
               <label htmlFor="email" className="dark:text-gray-300">
                 Email
@@ -193,7 +193,7 @@ export function SignIn() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-md border px-3 py-2 focus:border-indigo-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:focus:border-indigo-400"
+                className="w-full rounded-md border px-3 py-2 focus:border-indigo-500 focus:outline-hidden dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:focus:border-indigo-400"
               />
               <label htmlFor="password" className="dark:text-gray-300">
                 Password

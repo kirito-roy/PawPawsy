@@ -238,7 +238,7 @@ export default function LandingPage() {
   return (
     <div className="text-gray-900 transition duration-500 bg-white dark:bg-gray-900 dark:text-white">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 shadow-sm bg-white/80 dark:bg-gray-900/80 backdrop-blur dark:border-gray-700">
+      <header className="sticky top-0 z-50 border-b border-gray-200 shadow-sm bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm dark:border-gray-700">
         <div className="flex items-center justify-between px-2 py-4 mx-auto max-w-7xl">
           <h1 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
             Blogging Platform
@@ -383,7 +383,7 @@ export default function LandingPage() {
       <section id="features" className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-2 text-center">
           {/* Features Grid */}
-          <div className="p-12 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-2xl">
+          <div className="p-12 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-xs rounded-2xl shadow-2xl">
             {/* Section Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -438,7 +438,7 @@ export default function LandingPage() {
       {/* Steps Section */}
       <section id="steps" className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-2 text-center">
-          <div className="p-12 bg-gray-200 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-2xl">
+          <div className="p-12 bg-gray-200 dark:bg-gray-800/50 backdrop-blur-xs rounded-2xl shadow-2xl">
             {/* Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -571,7 +571,7 @@ export default function LandingPage() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-20 bg-gradient-to-b from-white via-orange-50 to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+        className="py-20 bg-linear-to-b from-white via-orange-50 to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
       >
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           {/* Left Side: Info */}
@@ -647,7 +647,7 @@ export default function LandingPage() {
                   type="text"
                   placeholder="Enter your name"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
-              focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-teal-400
+              focus:outline-hidden focus:ring-2 focus:ring-orange-500 dark:focus:ring-teal-400
               bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                 />
               </div>
@@ -659,7 +659,7 @@ export default function LandingPage() {
                   type="email"
                   placeholder="Enter your email"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
-              focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-teal-400
+              focus:outline-hidden focus:ring-2 focus:ring-orange-500 dark:focus:ring-teal-400
               bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                 />
               </div>
@@ -671,13 +671,13 @@ export default function LandingPage() {
                   rows="5"
                   placeholder="Type your message..."
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
-              focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-teal-400
+              focus:outline-hidden focus:ring-2 focus:ring-orange-500 dark:focus:ring-teal-400
               bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-orange-500 to-teal-500 
+                className="w-full py-3 px-6 rounded-lg bg-linear-to-r from-orange-500 to-teal-500 
             text-white font-semibold shadow-md hover:opacity-90 transition"
               >
                 Send Message

@@ -13,8 +13,8 @@ const SkeletonUserCard = () => (
     <div className="flex items-center gap-4 md:flex-col">
       <div className="w-16 h-16 rounded-full bg-gray-300 dark:bg-gray-700 md:w-24 md:h-24 md:mb-4"></div>
       <div className="md:text-center">
-        <div className="h-5 bg-gray-300 dark:bg-gray-700 rounded w-32 mb-2"></div>
-        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-48 md:w-32"></div>
+        <div className="h-5 bg-gray-300 dark:bg-gray-700 rounded-sm w-32 mb-2"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-48 md:w-32"></div>
       </div>
     </div>
     <div className="h-9 bg-gray-300 dark:bg-gray-700 rounded-md w-28 md:mt-4"></div>
@@ -157,7 +157,7 @@ export default function AllUsersPage() {
                   </Typography>
                 </div>
               </div>
-              <div className="flex-shrink-0 md:mt-4">
+              <div className="shrink-0 md:mt-4">
                 {following.has(user._id) ? (
                   <Button
                     variant="outlined"

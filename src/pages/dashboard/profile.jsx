@@ -27,24 +27,24 @@ export const ProfilePageSkeleton = () => (
     {/* Profile Header Skeleton */}
     <div className="shadow-lg dark:bg-gray-800 rounded-xl p-6">
       <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left md:gap-8">
-        <div className="relative flex-shrink-0 mb-4 md:mb-0">
+        <div className="relative shrink-0 mb-4 md:mb-0">
           <div className="h-[110px] w-[110px] bg-gray-300 dark:bg-gray-700 rounded-full"></div>
         </div>
-        <div className="flex-grow w-full">
-          <div className="h-7 bg-gray-300 dark:bg-gray-700 rounded w-1/3 mx-auto md:mx-0"></div>
-          <div className="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2 mx-auto md:mx-0 mt-2"></div>
+        <div className="grow w-full">
+          <div className="h-7 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/3 mx-auto md:mx-0"></div>
+          <div className="h-5 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/2 mx-auto md:mx-0 mt-2"></div>
           <div className="flex justify-center md:justify-start gap-6 mt-4">
             <div className="text-center w-16">
-              <div className="h-5 w-full bg-gray-300 dark:bg-gray-700 rounded"></div>
-              <div className="h-4 w-10/12 bg-gray-300 dark:bg-gray-700 rounded mx-auto mt-1"></div>
+              <div className="h-5 w-full bg-gray-300 dark:bg-gray-700 rounded-sm"></div>
+              <div className="h-4 w-10/12 bg-gray-300 dark:bg-gray-700 rounded-sm mx-auto mt-1"></div>
             </div>
             <div className="text-center w-16">
-              <div className="h-5 w-full bg-gray-300 dark:bg-gray-700 rounded"></div>
-              <div className="h-4 w-full bg-gray-300 dark:bg-gray-700 rounded mx-auto mt-1"></div>
+              <div className="h-5 w-full bg-gray-300 dark:bg-gray-700 rounded-sm"></div>
+              <div className="h-4 w-full bg-gray-300 dark:bg-gray-700 rounded-sm mx-auto mt-1"></div>
             </div>
             <div className="text-center w-16">
-              <div className="h-5 w-full bg-gray-300 dark:bg-gray-700 rounded"></div>
-              <div className="h-4 w-full bg-gray-300 dark:bg-gray-700 rounded mx-auto mt-1"></div>
+              <div className="h-5 w-full bg-gray-300 dark:bg-gray-700 rounded-sm"></div>
+              <div className="h-4 w-full bg-gray-300 dark:bg-gray-700 rounded-sm mx-auto mt-1"></div>
             </div>
           </div>
         </div>
@@ -53,26 +53,26 @@ export const ProfilePageSkeleton = () => (
 
     {/* Blog List Skeleton */}
     <div className="bg-white rounded-xl shadow-md dark:bg-gray-800 p-4 sm:p-6">
-      <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded w-48 mb-6"></div>
+      <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded-sm w-48 mb-6"></div>
       {/* Desktop Table Skeleton */}
       <div className="hidden md:block">
         <div className="w-full text-left border-collapse">
           <div className="flex bg-gray-200 dark:bg-gray-700 p-3 rounded-t-lg">
-            <div className="w-2/5 h-4 bg-gray-400 dark:bg-gray-600 rounded"></div>
-            <div className="w-1/5 h-4 bg-gray-400 dark:bg-gray-600 rounded ml-6"></div>
-            <div className="w-1/5 h-4 bg-gray-400 dark:bg-gray-600 rounded ml-6"></div>
-            <div className="w-1/5 h-4 bg-gray-400 dark:bg-gray-600 rounded ml-6"></div>
+            <div className="w-2/5 h-4 bg-gray-400 dark:bg-gray-600 rounded-sm"></div>
+            <div className="w-1/5 h-4 bg-gray-400 dark:bg-gray-600 rounded-sm ml-6"></div>
+            <div className="w-1/5 h-4 bg-gray-400 dark:bg-gray-600 rounded-sm ml-6"></div>
+            <div className="w-1/5 h-4 bg-gray-400 dark:bg-gray-600 rounded-sm ml-6"></div>
           </div>
           <div className="divide-y divide-gray-200 dark:divide-gray-700">
             {[...Array(3)].map((_, i) => (
               <div key={i} className="flex items-center p-4">
                 <div className="flex items-center gap-3 w-2/5">
                   <div className="w-12 h-12 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-3/4"></div>
                 </div>
-                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/5 ml-6"></div>
-                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/5 ml-6"></div>
-                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/5 ml-6"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/5 ml-6"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/5 ml-6"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded-sm w-1/5 ml-6"></div>
               </div>
             ))}
           </div>
@@ -85,11 +85,11 @@ export const ProfilePageSkeleton = () => (
             key={i}
             className="p-4 bg-gray-50 rounded-lg shadow dark:bg-gray-700/50 flex items-start gap-4"
           >
-            <div className="w-16 h-16 bg-gray-300 dark:bg-gray-600 rounded-lg flex-shrink-0"></div>
-            <div className="flex-grow">
-              <div className="h-5 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mb-2"></div>
-              <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-1/4 mb-2"></div>
-              <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded w-1/3"></div>
+            <div className="w-16 h-16 bg-gray-300 dark:bg-gray-600 rounded-lg shrink-0"></div>
+            <div className="grow">
+              <div className="h-5 bg-gray-300 dark:bg-gray-600 rounded-sm w-3/4 mb-2"></div>
+              <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded-sm w-1/4 mb-2"></div>
+              <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded-sm w-1/3"></div>
             </div>
           </div>
         ))}
@@ -267,7 +267,7 @@ export function ProfilePage() {
       <Card className="shadow-lg dark:bg-gray-800">
         <CardBody>
           <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left md:gap-8">
-            <div className="relative flex-shrink-0 mb-4 md:mb-0">
+            <div className="relative shrink-0 mb-4 md:mb-0">
               {profile?.profilePicture ? (
                 <img
                   src={profile.profilePicture}
@@ -297,9 +297,9 @@ export function ProfilePage() {
                 <CameraIcon className="w-5 h-5" />
               </button>
             </div>
-            <div className="flex-grow w-full">
+            <div className="grow w-full">
               <div className="flex justify-between items-start">
-                <div className="flex-grow">
+                <div className="grow">
                   {isEditing ? (
                     <div className="space-y-4 max-w-sm">
                       <input
@@ -307,14 +307,14 @@ export function ProfilePage() {
                         name="name"
                         value={editData.name}
                         onChange={handleEditChange}
-                        className="w-full p-2 text-xl font-bold bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                        className="w-full p-2 text-xl font-bold bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:outline-hidden"
                       />
                       <input
                         type="email"
                         name="email"
                         value={editData.email}
                         onChange={handleEditChange}
-                        className="w-full p-2 text-md bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                        className="w-full p-2 text-md bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden"
                       />
                     </div>
                   ) : (
@@ -472,14 +472,14 @@ export function ProfilePage() {
                   <img
                     src={`data:${blog.attachedImages[0].contentType};base64,${blog.attachedImages[0].data}`}
                     alt={blog.blogTitle}
-                    className="flex-shrink-0 object-cover w-16 h-16 rounded-lg"
+                    className="shrink-0 object-cover w-16 h-16 rounded-lg"
                   />
                 ) : (
-                  <div className="flex items-center justify-center flex-shrink-0 w-16 h-16 text-gray-500 bg-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-center shrink-0 w-16 h-16 text-gray-500 bg-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-400">
                     📷
                   </div>
                 )}
-                <div className="flex-grow">
+                <div className="grow">
                   <Link to={`/dashboard/blog-viewer/${blog._id}`}>
                     <h3 className="pr-8 text-md font-semibold text-blue-600 hover:underline dark:text-blue-400">
                       {blog.blogTitle}

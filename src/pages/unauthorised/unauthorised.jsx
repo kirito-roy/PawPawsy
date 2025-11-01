@@ -169,10 +169,10 @@ function Unauthorised() {
                     <div className="h-[8px] w-[50px] rounded-[4px] bg-[#EBF3FC] animate-pulse-glow"></div>
                   </div>
                 </div>
-                <div className="h-10 w-[130px] bg-[#1C2127] rounded-sm mx-auto mt-[80px] relative">
+                <div className="h-10 w-[130px] bg-[#1C2127] rounded-xs mx-auto mt-[80px] relative">
                   <div className="absolute top-[15px] left-[25px] h-[5px] w-[15px] rounded-full bg-white animate-eye"></div>
                   <div className="absolute top-[15px] left-[65px] h-[5px] w-[15px] rounded-full bg-white animate-eye"></div>
-                  <div className="h-10 w-[130px] bg-[#8594A5] rounded-sm animate-leaf origin-right"></div>
+                  <div className="h-10 w-[130px] bg-[#8594A5] rounded-xs animate-leaf origin-right"></div>
                 </div>
               </div>
             </div>
