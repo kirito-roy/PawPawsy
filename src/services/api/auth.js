@@ -2,13 +2,12 @@
 import api from './../axiosConfig'; // Import your configured Axios instance
 
 // Base path for user-related endpoints
-const USER_BASE_PATH = 'auth/';
 
 
 const AuthService = {
     loginUser: async (loginData) => {
         try {
-            const response = await api.post(`${USER_BASE_PATH}login`, loginData);
+            const response = await api.post(`/login`, loginData);
             return response.data; // Axios puts the actual data in .data
         } catch (error) {
             console.error('Error logging in user:', error);
@@ -17,7 +16,8 @@ const AuthService = {
     },
     signUpUser: async (signUpData) => {
         try {
-            const response = await api.post(`${USER_BASE_PATH}signup`, signUpData);
+            console.log(signUpData);
+            const response = await api.post(`/register`, signUpData);
             return response.data; // Axios puts the actual data in .data
         } catch (error) {
             console.error('Error signing up user:', error);
@@ -26,7 +26,7 @@ const AuthService = {
     },
     verifyOtp: async (otpData) => {
         try {
-            const response = await api.post(`${USER_BASE_PATH}verify-otp`, otpData);
+            const response = await api.post(`/verify-otp`, otpData);
             return response.data; // Axios puts the actual data in .data
         } catch (error) {
             console.error('Error verifying OTP:', error);
@@ -35,7 +35,7 @@ const AuthService = {
     },
     googleLogin: async (googleData) => {
         try {
-            const response = await api.post(`${USER_BASE_PATH}google-login`, googleData);
+            const response = await api.post(`/google-login`, googleData);
             return response.data; // Axios puts the actual data in .data
         } catch (error) {
             console.error('Error signing in with Google:', error);
@@ -44,7 +44,7 @@ const AuthService = {
     },
     forgotPassword: async (email) => {
         try {
-            const response = await api.post(`${USER_BASE_PATH}forgot-password`, { email });
+            const response = await api.post(`/forgot-password`, { email });
             return response.data; // Axios puts the actual data in .data
         } catch (error) {
             console.error('Error sending password reset email:', error);
@@ -53,7 +53,7 @@ const AuthService = {
     },
     resetPassword: async (resetData) => {
         try {
-            const response = await api.post(`${USER_BASE_PATH}reset-password`, resetData);
+            const response = await api.post(`/reset-password`, resetData);
             return response.data; // Axios puts the actual data in .data
         } catch (error) {
             console.error('Error resetting password:', error);
@@ -64,7 +64,7 @@ const AuthService = {
         try {
             // The endpoint is now under 'auth/'
             // We send a JSON object, so the default 'application/json' header is used.
-            const response = await api.post(`${USER_BASE_PATH}upload-profile-picture`, { profilePicture: base64Image });
+            const response = await api.post(`/upload-profile-picture`, { profilePicture: base64Image });
             return response.data;
         } catch (error) {
             console.error('Error uploading profile picture:', error);
@@ -73,7 +73,7 @@ const AuthService = {
     },
     updateProfile: async (profileData) => {
         try {
-            const response = await api.put(`${USER_BASE_PATH}update-profile`, profileData);
+            const response = await api.put(`/update-profile`, profileData);
             return response.data;
         } catch (error) {
             console.error('Error updating profile:', error);
@@ -82,7 +82,7 @@ const AuthService = {
     },
     getCurrentUser: async () => {
         try {
-            const response = await api.get(`${USER_BASE_PATH}me`);
+            const response = await api.get(`/me`);
             return response.data;
         } catch (error) {
             console.error('Error fetching current user:', error);
@@ -91,7 +91,7 @@ const AuthService = {
     },
     getUserById: async (userId) => {
         try {
-            const response = await api.get(`${USER_BASE_PATH}user/${userId}`);
+            const response = await api.get(`/user/${userId}`);
             return response.data;
         } catch (error) {
             console.error(`Error fetching user by ID ${userId}:`, error);

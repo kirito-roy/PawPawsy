@@ -28,7 +28,7 @@ export function SignIn() {
     try {
       const response = await AuthService.loginUser({ email, password });
       if (response.msg === "Logged in successfully!") {
-        login(response.token);
+        login(response);
         const role = userRole() || "user";
         navigate(role === "admin" ? "/admin/admin-home" : "/dashboard/Explore");
       } else {

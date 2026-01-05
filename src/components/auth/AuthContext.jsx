@@ -32,9 +32,12 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (token) => {
-    const decoded = jwtDecode(token);
-    setUser(decoded.user);
-    localStorage.setItem("token", token); // Store the raw JWT string
+    console.log(token);
+    // const decoded = jwtDecode(token);
+    // setUser(decoded.user);
+    localStorage.setItem("token", token.access_token);
+    localStorage.setItem("token_type", token.token_type);
+    localStorage.setItem('user', token.user);
   };
 
   const logout = () => {
