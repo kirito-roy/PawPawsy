@@ -27,10 +27,11 @@ export function SignIn() {
 
     try {
       const response = await AuthService.loginUser({ email, password });
-      if (response.msg === "Logged in successfully!") {
+      if (response.status === "success") {
         login(response);
-        const role = userRole() || "user";
+        const role = userRole() ;
         navigate(role === "admin" ? "/admin/admin-home" : "/dashboard/Explore");
+
       } else {
         setError("Invalid email or password. Please try again.");
       }
@@ -39,6 +40,7 @@ export function SignIn() {
         navigate("/auth/suspended");
       } else {
         setError(
+          err.response?.data?.message ||
           err.response?.data?.msg ||
             err.response?.data?.error ||
             "An error occurred during sign-in. Please try again."

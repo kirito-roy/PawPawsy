@@ -14,12 +14,10 @@ export function SignUp() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -100,7 +98,7 @@ export function SignUp() {
     }
   };
 
-  const handleSendOtp = async (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
     setError("");
     setSuccess("");
@@ -119,31 +117,18 @@ export function SignUp() {
     }
 
     try {
-      await AuthService.signUpUser({ name, email, password });
-      setStep(2);
-      setSuccess("OTP sent to your email!");
+      const response = await AuthService.signUpUser({ name, email, password });
+      if (response && response.token) {
+        login(response.token);
+        navigate("/dashboard/Explore");
+      } else {
+        setSuccess("Account created successfully! Please log in.");
+        setTimeout(() => navigate("/auth/sign-in"), 1500);
+      }
     } catch (err) {
       setError(
-        err?.response?.data?.warning || "Failed to send OTP. Please try again."
+        err?.response?.data?.warning || "Failed to sign up. Please try again."
       );
-    }
-  };
-
-  const handleVerifyOtp = async (event) => {
-    event.preventDefault();
-    setError("");
-    setSuccess("");
-    if (!otp) {
-      setError("Please enter the OTP.");
-      return;
-    }
-
-    try {
-      const res = await AuthService.verifyOtp({ email, otp });
-      login(res.token);
-      navigate("/dashboard/Explore");
-    } catch (err) {
-      setError("OTP verification failed. Please try again.");
     }
   };
 
@@ -187,11 +172,10 @@ export function SignUp() {
           className="w-full max-w-md p-8 transition-colors duration-300 bg-white shadow-lg dark:bg-gray-800 rounded-2xl"
         >
           <h2 className="mb-6 text-2xl font-bold text-center text-gray-900 dark:text-white">
-            {step === 1 ? "Create Your Free Account" : "Enter OTP"}
+            Create Your Free Account
           </h2>
 
-          {step === 1 && (
-            <form className="space-y-6" onSubmit={handleSendOtp}>
+            <form className="space-y-6" onSubmit={handleSignUp}>
               <FloatLabel>
                 <InputText
                   id="name"
@@ -284,7 +268,7 @@ export function SignUp() {
                   className="w-full text-white bg-linear-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600"
                   type="submit"
                 >
-                  Send OTP
+                  Sign Up
                 </Button>
               </motion.div>
 
@@ -323,55 +307,6 @@ export function SignUp() {
                 </Link>
               </p>
             </form>
-          )}
-
-          {step === 2 && (
-            <form className="space-y-6" onSubmit={handleVerifyOtp}>
-              <FloatLabel>
-                <InputText
-                  id="otp"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
-                />
-                <label htmlFor="otp" className="dark:text-gray-300">
-                  Enter OTP
-                </label>
-              </FloatLabel>
-
-              {error && (
-                <Typography variant="small" color="red" className="text-center">
-                  {error}
-                </Typography>
-              )}
-              {success && (
-                <Typography
-                  variant="small"
-                  color="green"
-                  className="text-center"
-                >
-                  {success}
-                </Typography>
-              )}
-
-              <motion.div whileHover={{ scale: 1.02 }}>
-                <Button
-                  className="w-full text-white bg-green-600 hover:bg-green-700"
-                  type="submit"
-                >
-                  Verify & Register
-                </Button>
-              </motion.div>
-
-              <Button
-                variant="outlined"
-                onClick={() => setStep(1)}
-                className="w-full"
-              >
-                Back
-              </Button>
-            </form>
-          )}
         </motion.div>
       </div>
     </div>

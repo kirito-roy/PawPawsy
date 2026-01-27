@@ -10,9 +10,7 @@ const fileuploadService = {
         try {
             const formData = new FormData();
             formData.append('file', file);
-            for (let pair of formData.entries()) {
-                console.log(pair[0], pair[1]);
-            }
+            
             const response = await api.post(`${USER_BASE_PATH}upload`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",

@@ -9,49 +9,48 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // To handle initial token check
 
   // On component mount, check for a stored token/user data
+  // On component mount, check for a stored token/user data
   useEffect(() => {
-    const storedToken = localStorage.getItem("token"); // Or get your token
-    if (storedToken) {
-      try {
-        const decoded = jwtDecode(storedToken);
-        const currentTime = Date.now() / 1000;
-        if (decoded.exp < currentTime) {
-          console.error("Token has expired");
-          localStorage.removeItem("token");
-          setUser(null);
-        } else {
-          setUser(decoded.user); // Set user from decoded token
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+        try {
+            setUser(JSON.parse(storedUser));
+        } catch (e) {
+            console.error("Failed to parse user from localStorage", e);
         }
-      } catch (e) {
-        console.error("Failed to parse token from localStorage", e);
-        localStorage.removeItem("token"); // Clear corrupted data
-        setUser(null);
-      }
     }
     setLoading(false); // Finished checking
   }, []);
 
   const login = (token) => {
-    console.log(token);
     // const decoded = jwtDecode(token);
     // setUser(decoded.user);
-    localStorage.setItem("token", token.access_token);
-    localStorage.setItem("token_type", token.token_type);
-    localStorage.setItem('user', token.user);
+    const userData = token.data.user;
+    setUser(userData);
+    localStorage.setItem("token", token.data.access_token);
+    localStorage.setItem("token_type", token.data.token_type);
+    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem("roles", JSON.stringify(token.data.roles));
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem("token"); // Clear stored data
+    localStorage.removeItem("token_type");
+    localStorage.removeItem('user');
+    localStorage.removeItem('roles');
   };
   const userRole = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
+    const roles = localStorage.getItem("roles");
+    if (roles) {
       try {
-        const decoded = jwtDecode(token);
-        return decoded.user.role;
+        const parsedRoles = JSON.parse(roles);
+        if (Array.isArray(parsedRoles)) {
+            return parsedRoles.includes('admin') ? 'admin' : 'user';
+        }
+        return parsedRoles;
       } catch (e) {
-        return null;
+          return roles;
       }
     }
     return null;

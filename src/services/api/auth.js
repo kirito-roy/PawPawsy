@@ -16,7 +16,6 @@ const AuthService = {
     },
     signUpUser: async (signUpData) => {
         try {
-            console.log(signUpData);
             const response = await api.post(`/register`, signUpData);
             return response.data; // Axios puts the actual data in .data
         } catch (error) {
@@ -24,15 +23,15 @@ const AuthService = {
             throw error; // Re-throw the error to be handled by the calling component
         }
     },
-    verifyOtp: async (otpData) => {
-        try {
-            const response = await api.post(`/verify-otp`, otpData);
-            return response.data; // Axios puts the actual data in .data
-        } catch (error) {
-            console.error('Error verifying OTP:', error);
-            throw error; // Re-throw the error to be handled by the calling component
-        }
-    },
+    // verifyOtp: async (otpData) => {
+    //     try {
+    //         const response = await api.post(`/verify-otp`, otpData);
+    //         return response.data; // Axios puts the actual data in .data
+    //     } catch (error) {
+    //         console.error('Error verifying OTP:', error);
+    //         throw error; // Re-throw the error to be handled by the calling component
+    //     }
+    // },
     googleLogin: async (googleData) => {
         try {
             const response = await api.post(`/google-login`, googleData);
